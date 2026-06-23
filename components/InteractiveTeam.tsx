@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface Doctor {
   id: number;
@@ -91,7 +92,13 @@ export default function InteractiveTeam() {
       </div>
 
       {/* Interactive Detail Bio Pane (Right Column) */}
-      <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-xl flex flex-col md:flex-row gap-8 items-start relative overflow-hidden">
+      <motion.div
+        key={selectedDoctorId}
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35, ease: "easeOut" }}
+        className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-xl flex flex-col md:flex-row gap-8 items-start relative overflow-hidden"
+      >
         {/* Soft Decorative Accent */}
         <div className="absolute top-0 right-0 w-32 h-32 bg-primary-light rounded-bl-full -z-10 opacity-70" />
 
@@ -148,7 +155,7 @@ export default function InteractiveTeam() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

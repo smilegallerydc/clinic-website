@@ -1,12 +1,18 @@
 "use client";
 
 import BookingForm from "@/components/BookingForm";
+import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 font-sans">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 font-sans overflow-hidden">
       {/* 1. Page Header */}
-      <section className="text-center max-w-3xl mx-auto space-y-4 pt-6">
+      <motion.section
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+        className="text-center max-w-3xl mx-auto space-y-4 pt-6"
+      >
         <span className="text-primary font-bold text-xs uppercase tracking-widest block">
           Get In Touch
         </span>
@@ -16,17 +22,27 @@ export default function Contact() {
         <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto">
           Have an inquiry or ready to schedule your smile appointment? Use our secure online request portal or call our front desk coordinate directly.
         </p>
-      </section>
+      </motion.section>
 
       {/* 2. Main Two Column Details Layout */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         {/* Left Side: Booking form */}
-        <div className="lg:col-span-7">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="lg:col-span-7"
+        >
           <BookingForm />
-        </div>
+        </motion.div>
 
         {/* Right Side: Coordinates, Hours, Map */}
-        <div className="lg:col-span-5 space-y-6">
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut", delay: 0.15 }}
+          className="lg:col-span-5 space-y-6"
+        >
           {/* Direct Phone & Email Card */}
           <div className="bg-slate-50 border border-slate-100 rounded-3xl p-6 space-y-4 shadow-sm">
             <h3 className="font-display font-bold text-slate-800 text-lg">Direct Contacts</h3>
@@ -128,8 +144,8 @@ export default function Contact() {
               ></iframe>
             </div>
           </div>
-        </div>
-      </section>
+        </motion.div>
+      </div>
     </div>
   );
 }

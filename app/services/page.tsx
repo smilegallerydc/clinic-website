@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Accordion from "@/components/Accordion";
+import { motion } from "framer-motion";
 
 interface TreatmentItem {
   id: string;
@@ -82,9 +83,14 @@ const servicesData: TreatmentItem[] = [
 
 export default function Services() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 font-sans">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16 font-sans overflow-hidden">
       {/* 1. Page Header */}
-      <section className="text-center max-w-3xl mx-auto space-y-4 pt-6">
+      <motion.section
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+        className="text-center max-w-3xl mx-auto space-y-4 pt-6"
+      >
         <span className="text-primary font-bold text-xs uppercase tracking-widest block">
           SmileCare Treatments
         </span>
@@ -94,13 +100,17 @@ export default function Services() {
         <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto">
           We categorize our treatments to help you find answers easily. Explore our services below and expand any item to review its clinical workflow.
         </p>
-      </section>
+      </motion.section>
 
       {/* 2. Category Highlights Icons Grid */}
       <section className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {["General", "Orthodontics", "Cosmetic", "Restorative"].map((category) => (
-          <div
+        {["General", "Orthodontics", "Cosmetic", "Restorative"].map((category, index) => (
+          <motion.div
             key={category}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.45, delay: index * 0.1, ease: "easeOut" }}
             className="bg-slate-50 border border-slate-100 rounded-2xl p-6 text-center hover:-translate-y-1 transition-all duration-300 shadow-sm"
           >
             <span className="inline-block px-3 py-1 bg-white rounded-full text-slate-500 border border-slate-100 text-xs font-semibold uppercase tracking-wider mb-3">
@@ -108,7 +118,7 @@ export default function Services() {
             </span>
             <h3 className="font-display font-bold text-slate-800 text-base">{category}</h3>
             <p className="text-slate-400 text-xs mt-1">Specialized clinical rooms</p>
-          </div>
+          </motion.div>
         ))}
       </section>
 
@@ -119,49 +129,63 @@ export default function Services() {
         </h2>
 
         <div className="space-y-4">
-          {servicesData.map((item) => (
-            <Accordion key={item.id} title={`${item.name} (${item.category})`}>
-              <div className="space-y-4">
-                <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="font-bold text-xs uppercase text-slate-400">Duration:</span>
-                    <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-semibold font-sans">
-                      {item.duration}
-                    </span>
+          {servicesData.map((item, index) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.45, delay: index * 0.08, ease: "easeOut" }}
+            >
+              <Accordion title={`${item.name} (${item.category})`}>
+                <div className="space-y-4">
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="font-bold text-xs uppercase text-slate-400">Duration:</span>
+                      <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-semibold font-sans">
+                        {item.duration}
+                      </span>
+                    </div>
+                    <p className="text-slate-600 leading-relaxed font-sans">{item.expectText}</p>
                   </div>
-                  <p className="text-slate-600 leading-relaxed font-sans">{item.expectText}</p>
-                </div>
 
-                <div>
-                  <h5 className="font-bold text-xs uppercase text-slate-700 mb-2">Expected Benefits</h5>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {item.benefits.map((benefit, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs text-slate-500">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                          className="w-4 h-4 text-primary shrink-0 mt-0.5"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        <span>{benefit}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <div>
+                    <h5 className="font-bold text-xs uppercase text-slate-700 mb-2">Expected Benefits</h5>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {item.benefits.map((benefit, i) => (
+                        <li key={i} className="flex items-start gap-2 text-xs text-slate-500">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                            className="w-4 h-4 text-primary shrink-0 mt-0.5"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-            </Accordion>
+              </Accordion>
+            </motion.div>
           ))}
         </div>
       </section>
 
       {/* 4. Action Banner */}
-      <section className="bg-primary-light border border-primary/10 rounded-3xl p-8 md:p-12 text-center max-w-4xl mx-auto space-y-6 relative overflow-hidden">
+      <motion.section
+        initial={{ opacity: 0, scale: 0.98 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="bg-primary-light border border-primary/10 rounded-3xl p-8 md:p-12 text-center max-w-4xl mx-auto space-y-6 relative overflow-hidden"
+      >
         <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-10" />
         <h2 className="font-display font-bold text-2xl text-slate-800 max-w-md mx-auto">
           Need a Custom Quote or Diagnosis?
@@ -177,7 +201,7 @@ export default function Services() {
             Start Your Consultation
           </Link>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface AccordionProps {
   title: string;
@@ -38,15 +39,21 @@ export default function Accordion({ title, children }: AccordionProps) {
         </span>
       </button>
 
-      <div
-        className={`transition-all duration-300 ease-in-out overflow-hidden ${
-          isOpen ? "max-h-[500px] border-t border-slate-100/70" : "max-h-0"
-        }`}
-      >
-        <div className="p-6 text-sm text-slate-600 leading-relaxed bg-white">
-          {children}
-        </div>
-      </div>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="overflow-hidden border-t border-slate-100/70"
+          >
+            <div className="p-6 text-sm text-slate-600 leading-relaxed bg-white">
+              {children}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

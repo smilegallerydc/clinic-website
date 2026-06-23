@@ -3,8 +3,29 @@
 import Link from "next/link";
 import Image from "next/image";
 import Testimonials from "@/components/Testimonials";
+import { motion } from "framer-motion";
 
 export default function Home() {
+  const heroContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.05,
+      },
+    },
+  } as const;
+
+  const heroItem = {
+    hidden: { opacity: 0, y: 15 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.45, ease: "easeOut" as const },
+    },
+  };
+
   return (
     <div className="space-y-20 pb-12">
       {/* 1. Hero Section */}
@@ -23,8 +44,13 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <div className="max-w-2xl text-white space-y-6">
-            <div className="flex flex-wrap items-center gap-3">
+          <motion.div
+            variants={heroContainer}
+            initial="hidden"
+            animate="visible"
+            className="max-w-2xl text-white space-y-6"
+          >
+            <motion.div variants={heroItem} className="flex flex-wrap items-center gap-3">
               <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary-muted/30 text-primary-muted text-xs font-semibold uppercase tracking-wider">
                 <span className="w-2 h-2 rounded-full bg-primary-muted animate-pulse" />
                 Accepting New Patients
@@ -33,21 +59,21 @@ export default function Home() {
                 <span className="text-amber-400 font-bold">★ 4.9</span>
                 <span>(1,200+ Patient Reviews)</span>
               </div>
-            </div>
+            </motion.div>
 
-            <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight">
+            <motion.h1 variants={heroItem} className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight">
               Premium Dental Care Designed for Your{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-muted to-teal-200">
                 Perfect Smile
               </span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-slate-300 text-base sm:text-lg max-w-lg leading-relaxed font-normal">
+            <motion.p variants={heroItem} className="text-slate-300 text-base sm:text-lg max-w-lg leading-relaxed font-normal">
               Combining cutting-edge digital diagnostics with a warm, caring environment to protect and enhance your family&apos;s oral health in Chicago, IL.
-            </p>
+            </motion.p>
 
             {/* Key Benefits List */}
-            <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-300 font-medium pt-2">
+            <motion.div variants={heroItem} className="flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-300 font-medium pt-2">
               <div className="flex items-center gap-1.5">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -74,9 +100,9 @@ export default function Home() {
                 </svg>
                 <span>Anxiety-Free Sedation</span>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            <motion.div variants={heroItem} className="flex flex-wrap items-center gap-4 pt-2">
               <Link
                 href="/contact"
                 className="px-8 py-3.5 rounded-full bg-primary hover:bg-primary-hover text-white font-semibold text-sm transition-all duration-300 shadow-lg shadow-primary/20 hover:-translate-y-0.5"
@@ -89,16 +115,22 @@ export default function Home() {
               >
                 Explore Services
               </Link>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       {/* 2. Intro Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 font-sans">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 font-sans overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Visual Column */}
-          <div className="lg:col-span-5 relative">
+          <motion.div
+            initial={{ opacity: 0, x: -25 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.55, ease: "easeOut" }}
+            className="lg:col-span-5 relative"
+          >
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl z-10 border border-slate-100">
               <Image
                 src="/doctor.jpg"
@@ -110,10 +142,16 @@ export default function Home() {
             {/* Design accents */}
             <div className="absolute -top-6 -left-6 w-32 h-32 rounded-3xl bg-primary-light -z-10" />
             <div className="absolute -bottom-6 -right-6 w-48 h-48 rounded-full bg-teal-100/50 -z-10 blur-xl" />
-          </div>
+          </motion.div>
 
           {/* Right Bio Column */}
-          <div className="lg:col-span-7 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: 25 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.55, ease: "easeOut", delay: 0.15 }}
+            className="lg:col-span-7 space-y-6"
+          >
             <span className="text-primary font-bold text-xs uppercase tracking-widest block">
               About SmileCare Practice
             </span>
@@ -145,7 +183,7 @@ export default function Home() {
                 </svg>
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -163,12 +201,16 @@ export default function Home() {
             <p className="text-slate-500 text-sm">
               We offer high-fidelity dental treatments tailored to your oral health and aesthetic goals.
             </p>
-          </div>
-
-          {/* Cards Grid */}
+          </div>          {/* Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* General Dentistry */}
-            <div className="bg-white rounded-3xl p-8 border border-slate-200/50 shadow-sm hover:shadow-md transition-all duration-300 group flex flex-col justify-between h-[360px]">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: 0.05, ease: "easeOut" }}
+              className="bg-white rounded-3xl p-8 border border-slate-200/50 shadow-sm hover:shadow-md transition-all duration-300 group flex flex-col justify-between h-[360px]"
+            >
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-teal-50 text-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <svg
@@ -182,7 +224,7 @@ export default function Home() {
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
+                      d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39 0.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"
                     />
                   </svg>
                 </div>
@@ -209,10 +251,16 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
               </Link>
-            </div>
+            </motion.div>
 
             {/* Orthodontics */}
-            <div className="bg-white rounded-3xl p-8 border border-slate-200/50 shadow-sm hover:shadow-md transition-all duration-300 group flex flex-col justify-between h-[360px]">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+              className="bg-white rounded-3xl p-8 border border-slate-200/50 shadow-sm hover:shadow-md transition-all duration-300 group flex flex-col justify-between h-[360px]"
+            >
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-amber-50 text-accent flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <svg
@@ -253,10 +301,16 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
               </Link>
-            </div>
+            </motion.div>
 
             {/* Cosmetic Care */}
-            <div className="bg-white rounded-3xl p-8 border border-slate-200/50 shadow-sm hover:shadow-md transition-all duration-300 group flex flex-col justify-between h-[360px]">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: 0.35, ease: "easeOut" }}
+              className="bg-white rounded-3xl p-8 border border-slate-200/50 shadow-sm hover:shadow-md transition-all duration-300 group flex flex-col justify-between h-[360px]"
+            >
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <svg
@@ -302,7 +356,7 @@ export default function Home() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
               </Link>
-            </div>
+            </motion.div>
           </div>
 
           {/* Bottom Action */}
