@@ -29,94 +29,173 @@ export default function Home() {
   return (
     <div className="space-y-20 pb-12">
       {/* 1. Hero Section */}
-      <section className="relative min-h-[85vh] flex items-center bg-slate-900 overflow-hidden font-sans pt-12">
-        {/* Background Image with Dark Gradient Overlay */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/hero.jpg"
-            alt="SmileCare Modern Dental Reception Area"
-            fill
-            priority
-            className="object-cover object-center opacity-45 transform scale-105 animate-subtle-zoom"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/80 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent" />
-        </div>
+      <section className="relative min-h-[90vh] flex items-center bg-white overflow-hidden font-sans pt-12 md:pt-20">
+        {/* Soft Background Gradients */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-primary-light/50 blur-3xl -z-10" />
+        <div className="absolute bottom-10 left-10 w-[300px] h-[300px] rounded-full bg-teal-50/70 blur-3xl -z-10" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-          <motion.div
-            variants={heroContainer}
-            initial="hidden"
-            animate="visible"
-            className="max-w-2xl text-white space-y-6"
-          >
-            <motion.div variants={heroItem} className="flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-primary/20 border border-primary-muted/30 text-primary-muted text-xs font-semibold uppercase tracking-wider">
-                <span className="w-2 h-2 rounded-full bg-primary-muted animate-pulse" />
-                Accepting New Patients
-              </span>
-              <div className="inline-flex items-center gap-1.5 bg-slate-800/40 border border-slate-700/30 rounded-full px-3.5 py-1.5 text-xs text-slate-300 font-medium">
-                <span className="text-amber-400 font-bold">★ 4.9</span>
-                <span>(1,200+ Patient Reviews)</span>
-              </div>
-            </motion.div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            {/* Left Column: Content */}
+            <motion.div
+              variants={heroContainer}
+              initial="hidden"
+              animate="visible"
+              className="lg:col-span-6 space-y-6 text-slate-800"
+            >
+              {/* Trust Badge */}
+              <motion.div variants={heroItem} className="flex flex-wrap items-center gap-2.5">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-light text-primary text-xs font-semibold uppercase tracking-wider border border-primary/10">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                  Accepting New Patients
+                </span>
+                <span className="inline-flex items-center gap-1 bg-slate-100 rounded-full px-3 py-1 text-xs text-slate-600 font-medium">
+                  <span className="text-amber-500 font-bold">★ 4.9</span>
+                  <span className="text-slate-400 font-normal ml-1">Google Rating</span>
+                </span>
+              </motion.div>
 
-            <motion.h1 variants={heroItem} className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight">
-              Premium Dental Care Designed for Your{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-muted to-teal-200">
-                Perfect Smile
-              </span>
-            </motion.h1>
+              {/* Heading */}
+              <motion.h1 variants={heroItem} className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-slate-900">
+                Modern Dental Care for a{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-muted">
+                  Healthy, Confident Smile
+                </span>
+              </motion.h1>
 
-            <motion.p variants={heroItem} className="text-slate-300 text-base sm:text-lg max-w-lg leading-relaxed font-normal">
-              Combining cutting-edge digital diagnostics with a warm, caring environment to protect and enhance your family&apos;s oral health in Chicago, IL.
-            </motion.p>
+              {/* Paragraph */}
+              <motion.p variants={heroItem} className="text-slate-600 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
+                Experience a stress-free approach to oral health. We combine gentle specialists, advanced digital intraoral scans, and transparent pricing in a boutique, spa-like environment.
+              </motion.p>
 
-            {/* Key Benefits List */}
-            <motion.div variants={heroItem} className="flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-300 font-medium pt-2">
-              <div className="flex items-center gap-1.5">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2.5"
-                  stroke="currentColor"
-                  className="w-4 h-4 text-primary-muted"
+              {/* Checkmarks */}
+              <motion.div variants={heroItem} className="flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-600 font-medium pt-2">
+                <div className="flex items-center gap-1.5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="w-5 h-5 text-primary"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span>Certified Invisalign® Provider</span>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="w-5 h-5 text-primary"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
+                  <span>Anxiety-Free Sedation Options</span>
+                </div>
+              </motion.div>
+
+              {/* CTAs */}
+              <motion.div variants={heroItem} className="flex flex-wrap items-center gap-4 pt-2">
+                <Link
+                  href="/contact"
+                  className="px-8 py-3.5 rounded-full bg-primary hover:bg-primary-hover text-white font-semibold text-sm transition-all duration-300 shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-                <span>State-of-the-Art Tech</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2.5"
-                  stroke="currentColor"
-                  className="w-4 h-4 text-primary-muted"
+                  Request Appointment
+                </Link>
+                <Link
+                  href="/services"
+                  className="px-8 py-3.5 rounded-full border border-slate-300 hover:border-primary text-slate-700 hover:text-primary font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-                <span>Anxiety-Free Sedation</span>
-              </div>
+                  View Treatments
+                </Link>
+              </motion.div>
+
+              {/* Stats */}
+              <motion.div
+                variants={heroItem}
+                className="grid grid-cols-3 gap-4 pt-8 border-t border-slate-100 max-w-md text-left"
+              >
+                <div>
+                  <h4 className="font-display font-bold text-2xl text-slate-900">15k+</h4>
+                  <p className="text-slate-500 text-xs mt-0.5">Happy Smiles</p>
+                </div>
+                <div>
+                  <h4 className="font-display font-bold text-2xl text-slate-900">15+</h4>
+                  <p className="text-slate-500 text-xs mt-0.5">Years Practice</p>
+                </div>
+                <div>
+                  <h4 className="font-display font-bold text-2xl text-slate-900">99.8%</h4>
+                  <p className="text-slate-500 text-xs mt-0.5">Satisfaction</p>
+                </div>
+              </motion.div>
             </motion.div>
 
-            <motion.div variants={heroItem} className="flex flex-wrap items-center gap-4 pt-2">
-              <Link
-                href="/contact"
-                className="px-8 py-3.5 rounded-full bg-primary hover:bg-primary-hover text-white font-semibold text-sm transition-all duration-300 shadow-lg shadow-primary/20 hover:-translate-y-0.5"
+            {/* Right Column: Visual Block */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.65, ease: "easeOut", delay: 0.15 }}
+              className="lg:col-span-6 relative flex justify-center lg:justify-end"
+            >
+              <div className="relative w-full max-w-[500px] aspect-[4/3] sm:aspect-square rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white bg-slate-100 group">
+                <Image
+                  src="/hero.jpg"
+                  alt="SmileCare Dental Clinic Reception Desk"
+                  fill
+                  priority
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                />
+              </div>
+
+              {/* Overlapping Decorative Cards */}
+              <motion.div
+                initial={{ opacity: 0, x: 20, y: -20 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                className="absolute top-8 -right-4 bg-white/95 backdrop-blur shadow-xl border border-slate-50 p-4 rounded-2xl flex items-center gap-3 max-w-[200px]"
               >
-                Schedule Appointment
-              </Link>
-              <Link
-                href="/services"
-                className="px-8 py-3.5 rounded-full bg-slate-800/80 hover:bg-slate-700 hover:text-white text-slate-200 font-semibold text-sm border border-slate-700 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5"
+                <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center font-bold text-lg">
+                  ★
+                </div>
+                <div>
+                  <span className="block font-bold text-sm text-slate-800">Top Rated</span>
+                  <span className="block text-[10px] text-slate-400">Chicago Dental Practice</span>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: -20, y: 20 }}
+                animate={{ opacity: 1, x: 0, y: 0 }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                className="absolute -bottom-6 -left-4 bg-white/95 backdrop-blur shadow-xl border border-slate-50 p-4 rounded-2xl flex items-center gap-3 max-w-[220px]"
               >
-                Explore Services
-              </Link>
+                <div className="w-10 h-10 rounded-xl bg-teal-50 text-primary flex items-center justify-center shrink-0">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2.5"
+                    stroke="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39 0.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                  </svg>
+                </div>
+                <div>
+                  <span className="block font-bold text-sm text-slate-800">Advanced Tech</span>
+                  <span className="block text-[10px] text-slate-400">3D Diagnostic Scanners</span>
+                </div>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
