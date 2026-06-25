@@ -121,10 +121,7 @@ export default function Gallery() {
                 </span>
               </div>
             </div>
-            {/* Soft description caption */}
-            <div className="p-4 bg-white border-t border-slate-50">
-              <p className="text-slate-700 text-xs font-semibold tracking-wide">{img.alt}</p>
-            </div>
+
           </motion.div>
         ))}
       </div>
@@ -180,10 +177,7 @@ export default function Gallery() {
                 className="object-contain"
               />
               <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/80 to-transparent text-white">
-                <p className="text-sm font-semibold tracking-wide text-center">
-                  {galleryImages[activeImageIndex].alt}
-                </p>
-                <p className="text-[10px] text-slate-400 text-center mt-1">
+                <p className="text-xs text-slate-300 text-center font-medium">
                   Image {activeImageIndex + 1} of {galleryImages.length}
                 </p>
               </div>

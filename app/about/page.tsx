@@ -1,8 +1,8 @@
 "use client";
 
-import InteractiveTeam from "@/components/InteractiveTeam";
 import Gallery from "@/components/Gallery";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function About() {
   const timelineMilestones = [
@@ -83,21 +83,105 @@ export default function About() {
         ))}
       </section>
 
-      {/* 3. Interactive Doctors / Team Display */}
-      <section className="space-y-8">
+      {/* 3. Meet the Founder & Our Team */}
+      <section className="space-y-12">
         <div className="text-center max-w-xl mx-auto space-y-2">
-          <span className="text-primary font-bold text-xs uppercase tracking-widest">
-            Expert Personnel
+          <span className="text-primary font-bold text-xs uppercase tracking-widest text-gradient">
+            Our Founder & Clinical Team
           </span>
           <h2 className="font-display font-bold text-3xl text-slate-900">
-            Meet Our Dental Board
+            Meet Our Chief Dentist & Team
           </h2>
           <p className="text-slate-500 text-sm">
-            Click on a practitioner below to inspect their academic credentials, values, and core clinical focus.
+            Providing exceptional dental care backed by advanced international credentials and a supportive clinical staff.
           </p>
         </div>
 
-        <InteractiveTeam />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
+          {/* Dr. Hetal Chheda Profile (Left Column) */}
+          <div className="lg:col-span-5 bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-xl flex flex-col justify-between relative overflow-hidden">
+            {/* Soft Decorative Accent */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-light rounded-bl-full -z-10 opacity-70" />
+            
+            <div className="space-y-6">
+              <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+                <div className="w-32 h-32 shrink-0 relative rounded-2xl overflow-hidden shadow-md border border-slate-100">
+                  <Image
+                    src="/doctor.jpg"
+                    alt="Dr. Hetal Chheda"
+                    fill
+                    className="object-cover object-center"
+                  />
+                </div>
+                <div className="text-center sm:text-left space-y-1">
+                  <span className="inline-block px-3 py-1 rounded-full bg-primary-light text-primary font-semibold text-xs mb-1">
+                    Chief Dental Surgeon
+                  </span>
+                  <h3 className="font-display font-bold text-2xl text-slate-900 leading-tight">
+                    Dr. Hetal Chheda
+                  </h3>
+                  <p className="text-sm font-display font-semibold text-slate-600">
+                    BDS, PGDAOI Implant (France)
+                  </p>
+                  <p className="text-xs text-slate-400 font-sans italic">
+                    Founder, Cosmetic & Implant Specialist
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <p className="text-slate-600 text-sm leading-relaxed font-sans">
+                  Dr. Hetal Chheda is the founder and chief surgeon at Smile Gallery. With extensive experience in cosmetic smile redesign, dental implants, and laser therapies, she is dedicated to combining medical artistry with painless, patient-first care. She specializes in full mouth rehabilitation, laminates, and root canal therapies.
+                </p>
+
+                <div className="bg-slate-50 rounded-2xl p-4 border border-slate-100 italic text-slate-700 text-xs font-sans relative">
+                  <span className="absolute top-1 left-2 font-display text-4xl text-primary/10 select-none">“</span>
+                  <p className="relative z-10 pl-4 pr-2">
+                    &quot;My mission is to help you achieve your dream smile through advanced, painless, and highly personalized dental care. Everyone deserves the perfect smile.&quot;
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-6 border-t border-slate-100">
+              <h6 className="text-slate-800 text-xs font-bold uppercase tracking-wider mb-3">
+                Core Clinical Focus
+              </h6>
+              <div className="flex flex-wrap gap-2">
+                {["Smile Designing", "Dental Implants", "Laser Dentistry", "Root Canal Therapy"].map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1 rounded-lg border border-slate-100 bg-white text-slate-600 text-xs font-medium font-sans"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Group Photo Section (Right Column) */}
+          <div className="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-xl flex flex-col justify-between relative overflow-hidden">
+            <div className="space-y-4 h-full flex flex-col">
+              <div className="relative w-full flex-1 min-h-[300px] sm:min-h-[380px] rounded-2xl overflow-hidden shadow-md border border-slate-100">
+                <Image
+                  src="/team-group.jpg"
+                  alt="Smile Gallery Dental Clinic Team"
+                  fill
+                  className="object-cover object-center transition-transform duration-500 hover:scale-[1.02]"
+                />
+              </div>
+              <div className="space-y-2 mt-4">
+                <h4 className="font-display font-semibold text-lg text-slate-900">
+                  Our Supportive Clinical Team
+                </h4>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Behind every successful treatment at Smile Gallery is our unified team of dental assistants, specialists, and customer relations staff. Together, we maintain the highest standards of sterilization, diagnostic support, and patient comfort to ensure a hassle-free visit.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* 4. Journey Timeline Section */}

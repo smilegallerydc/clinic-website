@@ -45,16 +45,7 @@ export default function Home() {
               animate="visible"
               className="lg:col-span-6 space-y-7 text-slate-800"
             >
-              {/* Trust Badge */}
-              <motion.div variants={heroItem} className="flex flex-wrap items-center gap-3">
-                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold uppercase tracking-wider border border-emerald-100/80 shadow-sm">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  Next Opening: Today at 2:15 PM
-                </span>
-                <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-primary-light text-primary text-xs font-semibold uppercase tracking-wider border border-primary/10 shadow-sm">
-                  Accepting New Patients
-                </span>
-              </motion.div>
+
 
               {/* Heading */}
               <motion.h1 variants={heroItem} className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-slate-900">
