@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <div className="space-y-20 pb-12">
       {/* 1. Hero Section */}
-      <section className="relative min-h-[95vh] flex items-center bg-white overflow-hidden font-sans pt-16 md:pt-24 pb-12">
+      <section className="relative min-h-[80vh] lg:min-h-[calc(100vh-140px)] flex items-center bg-white overflow-hidden font-sans pt-2 md:pt-6 pb-6">
         {/* Modern grid background and soft gradients */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,118,110,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,118,110,0.025)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10" />
         <div className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full bg-primary-light/50 blur-3xl -z-20 animate-[pulse_10s_infinite_alternate]" />
@@ -43,7 +43,7 @@ export default function Home() {
               variants={heroContainer}
               initial="hidden"
               animate="visible"
-              className="lg:col-span-6 space-y-7 text-slate-800"
+              className="lg:col-span-6 space-y-6 text-slate-800"
             >
 
 
@@ -132,7 +132,7 @@ export default function Home() {
 
             {/* Right Column: Layered Editorial Collage */}
             <div className="lg:col-span-6 relative flex justify-center lg:justify-end">
-              <div className="relative w-full max-w-[500px] aspect-[4/5] sm:aspect-square md:aspect-[4/5] flex items-center justify-center">
+              <div className="relative w-full max-w-[440px] aspect-[4/5] sm:aspect-square md:aspect-[4/5] flex items-center justify-center">
                 {/* Background accent soft shape */}
                 <div className="absolute top-[10%] left-[5%] w-[85%] h-[80%] rounded-[3rem] bg-gradient-to-tr from-primary-light to-teal-50 -z-10 rotate-3" />
 
