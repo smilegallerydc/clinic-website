@@ -230,7 +230,7 @@ export default function Footer() {
                     d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
                   />
                 </svg>
-                <span>Ground Floor, Flat No. 1, Arvind Apartment, L.T. Road, Opp. P.N.G. Jewellers, Borivali West, Mumbai – 400092</span>
+                <span>Ground Floor, Flat No. 1, Arvind Apartment, L.T. Road, Opp. P.N.G. Jewellers, Next to Swiss Paradise, Borivali West, Mumbai – 400092</span>
               </p>
               {/* Interactive Map — clicking opens Google Maps app */}
               <a
