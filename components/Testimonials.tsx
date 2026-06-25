@@ -16,29 +16,29 @@ interface Testimonial {
 const testimonialsData: Testimonial[] = [
   {
     id: 1,
-    name: "Sarah Jenkins",
-    role: "Verified Patient",
+    name: "Durga Prasad",
+    role: "Google Reviewer",
     rating: 5,
-    treatment: "Cosmetic Veneers",
-    text: "I was always self-conscious about my smile, but Dr. Evans and the staff at SmileCare completely changed that. The digital smile preview made me feel so confident before we even started! The results are beautiful and natural.",
+    treatment: "Dental Implants",
+    text: "I visited Dr. Hetal for my missing teeth; she advised me on multiple dental implants. I underwent the procedure, and the entire process was extremely smooth. The clinic is clean, hygienic, and Dr. Hetal's expertise is outstanding.",
     avatarBg: "bg-teal-100 text-teal-800",
   },
   {
     id: 2,
-    name: "Michael Chen",
-    role: "Verified Patient",
+    name: "Nidhi Shah",
+    role: "Google Reviewer",
     rating: 5,
-    treatment: "Invisalign treatment",
-    text: "Excellent service! They explained every step of the Invisalign process and answered all my questions. The clinic is incredibly clean, high-tech, and everyone is warm and friendly. Highly recommend to anyone seeking orthodontic work.",
+    treatment: "Smile Designing",
+    text: "I visited Smile Gallery for my smile design and teeth whitening because I had a weird alignment of teeth which I wanted to correct. The results are amazing, and the entire consultation was very professional.",
     avatarBg: "bg-amber-100 text-amber-800",
   },
   {
     id: 3,
-    name: "Emily Rodriguez",
-    role: "Verified Patient",
+    name: "Manohar Lal",
+    role: "Google Reviewer",
     rating: 5,
-    treatment: "General Checkup & Clean",
-    text: "As someone who has severe dental anxiety, I can't recommend SmileCare enough. They offered comfortable sedation options and were so gentle during my clean. It's the first time in years I left a dentist feeling relaxed.",
+    treatment: "Full Mouth Rehab (FMR)",
+    text: "Smile Gallery Dental Clinic provides professional, gentle, and reliable dental care with modern facilities and a supportive team. They explained every detail and made the treatment completely comfortable.",
     avatarBg: "bg-indigo-100 text-indigo-800",
   },
 ];
@@ -65,7 +65,8 @@ export default function Testimonials() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.45, delay: index * 0.15, ease: "easeOut" }}
-            className="bg-slate-50 border border-slate-100 rounded-3xl p-8 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+            whileHover={{ y: -4 }}
+            className="bg-slate-50 border border-slate-100 rounded-3xl p-8 shadow-sm hover:shadow-md hover:border-primary/20 transition-[box-shadow,border-color] duration-300 flex flex-col justify-between"
           >
             <div>
               {/* Star Rating */}

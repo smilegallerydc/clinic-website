@@ -1,33 +1,107 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+
+// Brand-accurate social media SVG icons
+const InstagramIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
+    <defs>
+      <radialGradient id="ig-grad-footer" cx="30%" cy="107%" r="150%">
+        <stop offset="0%" stopColor="#fdf497" />
+        <stop offset="5%" stopColor="#fdf497" />
+        <stop offset="45%" stopColor="#fd5949" />
+        <stop offset="60%" stopColor="#d6249f" />
+        <stop offset="90%" stopColor="#285AEB" />
+      </radialGradient>
+    </defs>
+    <rect width="24" height="24" rx="5" fill="url(#ig-grad-footer)" />
+    <rect x="2" y="2" width="20" height="20" rx="5" fill="url(#ig-grad-footer)" />
+    <circle cx="12" cy="12" r="4.5" fill="none" stroke="white" strokeWidth="1.8" />
+    <circle cx="17.5" cy="6.5" r="1.2" fill="white" />
+    <rect x="2.5" y="2.5" width="19" height="19" rx="4" fill="none" stroke="white" strokeWidth="1.2" opacity="0.3" />
+  </svg>
+);
+
+const WhatsAppIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true" fill="none">
+    <rect width="24" height="24" rx="5" fill="#25D366" />
+    <path
+      d="M12 3.5C7.30558 3.5 3.5 7.30558 3.5 12C3.5 13.5871 3.93196 15.0699 4.68186 16.336L3.5 20.5L7.78066 19.3396C9.01301 20.0375 10.4571 20.5 12 20.5C16.6944 20.5 20.5 16.6944 20.5 12C20.5 7.30558 16.6944 3.5 12 3.5Z"
+      fill="#25D366"
+      stroke="white"
+      strokeWidth="1.2"
+    />
+    <path
+      d="M9.02 7.57C8.82 7.1 8.62 7.09 8.43 7.08C8.27 7.07 8.09 7.07 7.91 7.07C7.73 7.07 7.44 7.14 7.19 7.41C6.94 7.69 6.25 8.34 6.25 9.66C6.25 10.98 7.21 12.26 7.34 12.44C7.48 12.62 9.16 15.29 11.77 16.4C13.93 17.32 14.38 17.14 14.87 17.09C15.35 17.04 16.47 16.44 16.7 15.82C16.93 15.2 16.93 14.67 16.86 14.55C16.79 14.43 16.61 14.36 16.35 14.23C16.08 14.1 14.77 13.45 14.53 13.36C14.29 13.27 14.11 13.22 13.93 13.5C13.75 13.77 13.25 14.36 13.09 14.54C12.93 14.72 12.77 14.74 12.5 14.61C12.24 14.48 11.39 14.2 10.38 13.3C9.59 12.6 9.06 11.74 8.9 11.47C8.74 11.2 8.88 11.06 9.01 10.93C9.13 10.81 9.28 10.62 9.41 10.46C9.54 10.3 9.58 10.18 9.67 10C9.76 9.82 9.72 9.66 9.65 9.53C9.58 9.4 9.05 8.07 8.82 7.51L9.02 7.57Z"
+      fill="white"
+    />
+  </svg>
+);
+
+const YouTubeIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
+    <rect width="24" height="24" rx="5" fill="#FF0000" />
+    <path
+      d="M19.615 7.184C19.387 6.343 18.726 5.681 17.884 5.453C16.354 5 12 5 12 5C12 5 7.646 5 6.116 5.453C5.274 5.681 4.613 6.343 4.385 7.184C3.932 8.714 3.932 12 3.932 12C3.932 12 3.932 15.286 4.385 16.816C4.613 17.657 5.274 18.319 6.116 18.547C7.646 19 12 19 12 19C12 19 16.354 19 17.884 18.547C18.726 18.319 19.387 17.657 19.615 16.816C20.068 15.286 20.068 12 20.068 12C20.068 12 20.068 8.714 19.615 7.184Z"
+      fill="white"
+    />
+    <polygon points="10.182,9.455 10.182,14.545 14.545,12" fill="#FF0000" />
+  </svg>
+);
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    {
+      key: "instagram",
+      label: "Follow us on Instagram",
+      href: "https://instagram.com/smilegallerydentalcl?utm_medium=copy_link",
+      icon: <InstagramIcon />,
+      hoverBg: "hover:bg-gradient-to-br hover:from-[#fdf497] hover:via-[#fd5949] hover:to-[#d6249f]",
+    },
+    {
+      key: "whatsapp",
+      label: "Chat on WhatsApp",
+      href: "https://wa.me/message/MIPWG2AVM2GWC1",
+      icon: <WhatsAppIcon />,
+      hoverBg: "hover:bg-[#25D366]",
+    },
+    {
+      key: "youtube",
+      label: "Watch us on YouTube",
+      href: "https://www.youtube.com/@SmileGalleryDentalClinic-DrHet",
+      icon: <YouTubeIcon />,
+      hoverBg: "hover:bg-[#FF0000]",
+    },
+  ];
 
   return (
     <footer className="bg-slate-900 text-slate-300 font-sans border-t border-slate-800">
       {/* Dynamic CTA Banner Block */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -translate-y-12">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-primary to-primary-hover p-8 md:p-12 shadow-xl shadow-primary/20 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-primary to-accent p-8 md:p-12 shadow-xl shadow-primary/20 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-64 h-64 rounded-full bg-white/5 blur-3xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 translate-y-12 -translate-x-12 w-64 h-64 rounded-full bg-white/5 blur-3xl pointer-events-none" />
 
           <div className="relative z-10 text-center md:text-left max-w-xl">
             <h3 className="font-display font-bold text-2xl md:text-3xl text-white mb-2 leading-tight">
-              Ready to Transform Your Smile?
+              Loved Your Experience With Us?
             </h3>
             <p className="text-white/80 text-sm md:text-base font-medium">
-              Schedule your first appointment today. Our friendly team is ready to welcome you to our modern clinic.
+              Your feedback means a lot to us and helps others in Mumbai choose the right care. Take a moment to leave us a Google review!
             </p>
           </div>
           <div className="relative z-10 shrink-0">
-            <Link
-              href="/contact"
+            <a
+              href="https://g.page/r/CTDlFtXtThK6EBM/review"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-white text-primary hover:bg-slate-50 font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
             >
-              Book an Appointment
-            </Link>
+              Review Us on Google
+            </a>
           </div>
         </div>
       </div>
@@ -37,64 +111,33 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand Column */}
           <div className="flex flex-col gap-5">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="bg-primary text-white p-2 rounded-xl flex items-center justify-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="w-5 h-5"
-                >
-                  <path d="M12 2C6.5 2 2 6.5 2 12c0 2.5 1 4.8 2.5 6.5C5.8 20 8.5 22 12 22s6.2-2 7.5-3.5c1.5-1.7 2.5-4 2.5-6.5 0-5.5-4.5-10-10-10z" />
-                  <path d="M12 6c-2 0-3 1.5-3 3.5s1 3.5 3 3.5 3-1.5 3-3.5S14 6 12 6z" />
-                  <path d="M9 16c2 1 4 1 6 0" />
-                </svg>
-              </div>
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <Image
+                src="/logo.svg"
+                alt="Smile Gallery Logo"
+                width={36}
+                height={36}
+                className="brightness-0 invert"
+              />
               <span className="font-display font-bold text-xl tracking-tight text-white">
-                Smile<span className="text-primary-muted">Care</span>
+                Smile<span className="text-primary-muted">Gallery</span>
               </span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed font-normal">
-              State-of-the-art dental care tailored for your family. We focus on comfort, quality, and modern treatments.
+              State-of-the-art dental care in Borivali West, where dentistry meets artistry. Dr. Hetal Chheda — BDS, PGDAOI Implant (France).
             </p>
-            {/* Social Links */}
+            {/* Social Links — brand logos */}
             <div className="flex items-center gap-3 mt-2">
-              {["facebook", "instagram", "twitter", "linkedin"].map((social) => (
+              {socialLinks.map(({ key, label, href, icon, hoverBg }) => (
                 <a
-                  key={social}
-                  href={`https://${social}.com`}
+                  key={key}
+                  href={href}
                   target="_blank"
                   rel="noreferrer"
-                  className="w-10 h-10 rounded-full bg-slate-800 hover:bg-primary hover:text-white text-slate-400 flex items-center justify-center transition-colors duration-300"
-                  aria-label={`Follow us on ${social}`}
+                  className={`w-10 h-10 rounded-xl bg-slate-800 ${hoverBg} flex items-center justify-center transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg overflow-hidden`}
+                  aria-label={label}
                 >
-                  <svg
-                    className="w-4 h-4"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                    aria-hidden="true"
-                  >
-                    {social === "facebook" && (
-                      <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c4.56-.93 8-4.96 8-9.75z" />
-                    )}
-                    {social === "instagram" && (
-                      <path
-                        fillRule="evenodd"
-                        d="M12.315 2c2.43 0 2.784.01 3.71.054 1.139.052 1.9.24 2.502.475a4.454 4.454 0 011.66 1.08 4.454 4.454 0 011.08 1.66c.236.602.424 1.363.475 2.502.043.927.054 1.28.054 3.71s-.01 2.784-.054 3.71c-.052 1.139-.24 1.9-.475 2.502a4.454 4.454 0 01-1.08 1.66 4.454 4.454 0 01-1.66 1.08c-.602.236-1.363.424-2.502.475-.927.043-1.28.054-3.71.054s-2.784-.01-3.71-.054c-1.139-.052-1.9-.24-2.502-.475a4.454 4.454 0 01-1.66-1.08 4.454 4.454 0 01-1.08-1.66c-.236-.602-.424-1.363-.475-2.502A34.524 34.524 0 012 12.315c0-2.43.01-2.784.054-3.71.052-1.139.24-1.9.475-2.502a4.454 4.454 0 011.08-1.66 4.454 4.454 0 011.66-1.08c.602-.236 1.363-.424 2.502-.475.927-.043 1.28-.054 3.71-.054zm1.102 4.757a5.565 5.565 0 100 11.13 5.565 5.565 0 000-11.13zm5.408 1.402a1.238 1.238 0 100 2.477 1.238 1.238 0 000-2.477z"
-                        clipRule="evenodd"
-                      />
-                    )}
-                    {social === "twitter" && (
-                      <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.986 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
-                    )}
-                    {social === "linkedin" && (
-                      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                    )}
-                  </svg>
+                  {icon}
                 </a>
               ))}
             </div>
@@ -116,12 +159,12 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/services" className="hover:text-primary-muted transition-colors">
-                  Services & Treatments
+                  Services &amp; Treatments
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-primary-muted transition-colors">
-                  Contact & Directions
+                  Contact &amp; Directions
                 </Link>
               </li>
             </ul>
@@ -132,18 +175,35 @@ export default function Footer() {
             <h4 className="font-display font-bold text-white text-base">Clinic Hours</h4>
             <ul className="flex flex-col gap-2 text-sm text-slate-400">
               <li className="flex justify-between border-b border-slate-800 pb-1.5">
-                <span>Monday - Friday</span>
-                <span className="text-white font-medium">8:00 AM - 7:00 PM</span>
-              </li>
-              <li className="flex justify-between border-b border-slate-800 pb-1.5">
-                <span>Saturday</span>
-                <span className="text-white font-medium">9:00 AM - 4:00 PM</span>
+                <span>Monday – Saturday</span>
+                <span className="text-white font-medium">9:30 AM – 9:00 PM</span>
               </li>
               <li className="flex justify-between">
                 <span>Sunday</span>
-                <span className="text-accent font-semibold">Closed</span>
+                <span className="text-primary-muted font-semibold">Closed</span>
               </li>
             </ul>
+            {/* Quick contact */}
+            <div className="flex flex-col gap-1.5 mt-2">
+              <a
+                href="tel:+919819300553"
+                className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors group"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4 text-primary-muted group-hover:text-white transition-colors shrink-0">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.127-4.105-6.93-6.93l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                </svg>
+                +91 98193 00553
+              </a>
+              <a
+                href="tel:+919326785438"
+                className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors group"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-4 h-4 text-primary-muted group-hover:text-white transition-colors shrink-0">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.127-4.105-6.93-6.93l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                </svg>
+                +91 93267 85438
+              </a>
+            </div>
           </div>
 
           {/* Contact coordinates & Mini Map Column */}
@@ -170,35 +230,45 @@ export default function Footer() {
                     d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
                   />
                 </svg>
-                <span>123 Bright-Smile Way, Medical District, Chicago, IL 60611</span>
+                <span>Ground Floor, Flat No. 1, Arvind Apartment, L.T. Road, Opp. P.N.G. Jewellers, Borivali West, Mumbai – 400092</span>
               </p>
-              {/* Stylized Interactive Map Placeholder */}
-              <div className="w-full h-52 rounded-xl overflow-hidden relative border border-slate-800 bg-slate-950 group">
-                <div className="absolute inset-0 bg-slate-950 opacity-20 mix-blend-color pointer-events-none" />
+              {/* Interactive Map — clicking opens Google Maps app */}
+              <a
+                href="https://goo.gl/maps/nDTsnEUyR1D2"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full h-52 rounded-xl overflow-hidden relative border border-slate-700 bg-slate-800 group cursor-pointer"
+                aria-label="Open clinic location in Google Maps"
+              >
                 <iframe
-                  title="SmileCare Dental Clinic Map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11880.492291371424!2d-87.625902!3d41.898816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x880fd34eab842f1f%3A0x6fb878eb32c4e201!2sMagnificent%20Mile%2C%20Chicago%2C%20IL%2060611!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                  title="Smile Gallery Dental Clinic Map"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.8812678680795!2d72.85244517610014!3d19.231050787002012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b12f6c91a0ef%3A0xe54d241d720c242c!2sSmile%20Gallery%20Dental%20Clinic!5e0!3m2!1sen!2sin!4v1719310000000!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
-                  className="border-0 opacity-80 group-hover:opacity-100 transition-opacity duration-300 filter invert contrast-110 saturate-75"
+                  className="border-0 opacity-80 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </div>
+                />
+                {/* Overlay — "Open in Maps" hint */}
+                <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/20 transition-colors duration-300 flex items-center justify-center">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3.5 h-3.5">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>
+                    Open in Maps
+                  </span>
+                </div>
+              </a>
             </div>
           </div>
         </div>
 
         {/* Footer Bottom Details */}
         <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-sans">
-          <p>© {currentYear} SmileCare Dental Practice. All rights reserved.</p>
+          <p>© {currentYear} Smile Gallery Dental Clinic &amp; Implant Centre. All rights reserved.</p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="hover:text-slate-300 transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="hover:text-slate-300 transition-colors">
-              Terms of Service
-            </Link>
+            <span className="text-slate-600">Est. 2011 · Borivali West, Mumbai</span>
           </div>
         </div>
       </div>

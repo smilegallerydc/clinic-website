@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Accordion from "@/components/Accordion";
 import { motion } from "framer-motion";
 
@@ -15,68 +14,172 @@ interface TreatmentItem {
 
 const servicesData: TreatmentItem[] = [
   {
-    id: "general-checkup",
-    name: "Comprehensive Checkup & Dental Clean",
-    category: "General",
-    duration: "45 - 60 Mins",
-    expectText: "A thorough examination of your teeth, gums, and oral tissues. We take low-radiation digital X-rays to screen for hidden issues, perform gentle plaque and tartar scaling, polish your teeth to remove stains, and provide a personalized oral care roadmap.",
+    id: "fmr",
+    name: "Full Mouth Rehabilitation (FMR)",
+    category: "Restorative",
+    duration: "Multiple Sessions",
+    expectText: "A comprehensive reconstruction of all teeth in both the upper and lower jaws. Tailored for patients with extensive tooth wear, decay, or trauma to restore complete chewing function, bite alignment, and smile aesthetics.",
     benefits: [
-      "Prevents gum disease and tooth decay",
-      "Removes stubborn tartar plaque that brushing misses",
-      "Early screening for oral cancers and structural wear",
-      "Freshens breath and removes surface stains",
+      "Restores full chewing functionality and bite force",
+      "Improves overall facial support and smile aesthetics",
+      "Long-lasting, custom-crafted durable restorations",
+      "Resolves chronic joint discomfort from incorrect alignment",
+    ],
+  },
+  {
+    id: "dental-implants",
+    name: "Dental Implants",
+    category: "Restorative",
+    duration: "3 - 6 Months",
+    expectText: "The gold standard for replacing missing teeth. A biocompatible titanium post is surgically placed into the jawbone, fusing over a few months, topped with a custom-crafted high-strength ceramic crown that matches your natural teeth.",
+    benefits: [
+      "Looks, feels, and functions exactly like natural teeth",
+      "Prevents jawbone shrinkage and facial structure changes",
+      "Doesn't require altering or grinding down adjacent teeth",
+      "Highly durable solution that can last a lifetime with proper care",
+    ],
+  },
+  {
+    id: "root-canals",
+    name: "Root Canal Therapy (RCT)",
+    category: "Restorative",
+    duration: "1 - 2 Sessions",
+    expectText: "A pain-relieving procedure designed to save infected or severely decayed teeth. We use advanced rotary endodontics to carefully clean the inner root canal system, remove bacteria and pulp, and seal it to prevent reinfection.",
+    benefits: [
+      "Relieves active toothaches and throbbing pain",
+      "Prevents the spread of infection to surrounding tissues",
+      "Saves your natural tooth from extraction",
+      "High success rate with modern pain-free techniques",
+    ],
+  },
+  {
+    id: "teeth-whitening",
+    name: "Teeth Whitening",
+    category: "Cosmetic",
+    duration: "45 - 60 Mins",
+    expectText: "Professional medical-grade bleaching treatments to safely lift deep stains and brighten your smile. We offer both single-visit in-office power whitening and convenient custom-takehome trays for long-lasting results.",
+    benefits: [
+      "Instantly brightens your smile by several shades",
+      "Safe, controlled application that minimizes sensitivity",
+      "Effective against coffee, tea, and aging stains",
+      "Quick cosmetic boost for special events and confidence",
+    ],
+  },
+  {
+    id: "braces",
+    name: "Braces & Orthodontics",
+    category: "Orthodontics",
+    duration: "12 - 24 Months",
+    expectText: "Correction of misaligned teeth and bite issues using comfortable modern metal or ceramic bracket systems. Our treatment plans ensure teeth are guided gradually into their optimal positions for health and beauty.",
+    benefits: [
+      "Corrects crowding, spacing, and severe bite misalignments",
+      "Improves oral hygiene by making teeth easier to clean",
+      "Reduces risk of uneven tooth wear and chipping",
+      "Enhances long-term facial balance and aesthetics",
     ],
   },
   {
     id: "invisalign",
     name: "Invisalign® Clear Aligners",
     category: "Orthodontics",
-    duration: "Varies (6-18 months)",
-    expectText: "We start with a 3D digital scan of your mouth using our modern iTero scanner—no messy putty molds required. We compile a virtual simulation of your teeth alignment journey from start to finish. You receive custom-made, clear, removable medical-grade aligners to wear 22 hours a day, changing trays every 1-2 weeks.",
+    duration: "6 - 18 Months",
+    expectText: "Clear, removable medical-grade plastic aligners customized using digital 3D scans. Virtually invisible, they slowly move your teeth to their perfect positions, allowing you to eat, brush, and floss normally.",
     benefits: [
-      "Virtually invisible treatment option",
-      "Removable for easy eating, brushing, and flossing",
-      "Smoother, more comfortable plastic trays compared to metal brackets",
-      "Fewer office visits needed for tightening adjustments",
+      "Completely discreet and virtually invisible",
+      "Removable for optimal brushing, flossing, and eating",
+      "Comfortable, smooth material without sharp wires",
+      "Requires fewer physical clinic adjustment visits",
     ],
   },
   {
-    id: "porcelain-veneers",
-    name: "Handcrafted Porcelain Veneers",
+    id: "cosmetic-procedures",
+    name: "Cosmetic Procedures & Fillings",
     category: "Cosmetic",
-    duration: "2 Sessions",
-    expectText: "First, we consult on your aesthetic goals and create a digital mock-up preview of your new smile. We conservatively prepare the tooth surfaces, take a digital scan, and fit comfortable temporary veneers. Once our master ceramist handcrafts your final high-strength porcelain shells, we permanently bond them to your teeth.",
+    duration: "30 - 45 Mins",
+    expectText: "Aesthetic smile enhancements using tooth-colored composite bonding, porcelain veneers, and mercury-free white fillings. We repair chipped, decayed, or misshapen teeth to restore a natural-looking appearance.",
     benefits: [
-      "Corrects severe discoloration, spacing gaps, or chips",
-      "Stronger and more stain-resistant than natural enamel",
-      "Tailored shape and color for a completely natural look",
-      "Immediate transformation in just two appointments",
+      "Restores damaged teeth using natural tooth-colored materials",
+      "Seamless blending with your existing enamel",
+      "Minimally invasive procedures preserving tooth structure",
+      "Strengthens teeth and prevents further decay",
     ],
   },
   {
-    id: "dental-implants",
-    name: "Single & Multi-Tooth Dental Implants",
-    category: "Restorative",
-    duration: "3 - 6 Months",
-    expectText: "We utilize high-resolution 3D CBCT scans to map out safe bone structure. In a comfortable procedure (under local numbing or sedation), we place a biocompatible titanium post. Once the bone fuses with the post over a few months, we place a custom-crafted ceramic crown that perfectly matches your surrounding teeth.",
+    id: "tmj-pain",
+    name: "TMJ Pain Management",
+    category: "General",
+    duration: "Varies",
+    expectText: "Diagnosis and therapy for Temporomandibular Joint (TMJ) disorders, which cause jaw clicking, headaches, and facial muscle pain. We provide customized bite guards, splints, and muscle relaxation guidance.",
     benefits: [
-      "Looks, feels, and functions exactly like a natural tooth",
-      "Prevents bone loss and structural shifting in the jaw",
-      "High success rate and lasts a lifetime with proper care",
-      "No adjustments or grinding of adjacent teeth required",
+      "Relieves chronic jaw pain, tension, and headaches",
+      "Prevents grinding (bruxism) and wear on tooth surfaces",
+      "Restores normal jaw movement and joint tracking",
+      "Improves sleep quality and decreases facial muscle fatigue",
     ],
   },
   {
-    id: "wisdom-teeth",
-    name: "Gentle Root Canal & Wisdom Teeth Care",
+    id: "fixed-teeth",
+    name: "Fixed Teeth in 7 Days",
     category: "Restorative",
-    duration: "60 - 90 Mins",
-    expectText: "Designed to relieve active toothache and save teeth from extraction. We use advanced rotary diagnostics to clean out infected tooth pulp and seal the canal. We offer nitrous oxide (laughing gas) and oral sedation to ensure you are comfortable, relaxed, and pain-free throughout the entire procedure.",
+    duration: "7 Days",
+    expectText: "An accelerated dental implant technique designed for full-arch restoration. Using modern loading protocols, patients receive fully functional, fixed permanent teeth securely attached to implants in just 7 days.",
     benefits: [
-      "Instantly relieves severe tooth pain caused by inflammation",
-      "Prevents the spread of infection to other teeth or bones",
-      "Allows you to keep your natural tooth instead of extracting it",
-      "High-fidelity local anesthetics ensure a pain-free process",
+      "Extremely fast transition to fully functional teeth",
+      "Eliminates the wait time of traditional implant bridges",
+      "Provides immediate confidence and chewing ability",
+      "Fewer surgical visits and customized aesthetic arches",
+    ],
+  },
+  {
+    id: "complete-denture",
+    name: "Complete Dentures",
+    category: "Restorative",
+    duration: "3 - 4 Sessions",
+    expectText: "Custom-crafted, high-comfort removable prosthetic teeth designed for patients who have lost all teeth in one or both arches. We focus on achieving a natural appearance, stable fit, and correct bite.",
+    benefits: [
+      "Restores speaking ability and proper chewing function",
+      "Supports facial muscles to restore a youthful appearance",
+      "Affordable and non-invasive tooth replacement option",
+      "Easy to clean and custom shaded to look natural",
+    ],
+  },
+  {
+    id: "gum-surgery",
+    name: "Gum Surgery",
+    category: "General",
+    duration: "45 - 60 Mins",
+    expectText: "Therapeutic and cosmetic periodontal surgeries to treat advanced gum disease (periodontitis) or fix uneven gum lines. Procedures include deep scaling, pocket reduction, and gum grafting for gum health.",
+    benefits: [
+      "Stops the progression of advanced periodontal disease",
+      "Protects underlying bone and prevents tooth loss",
+      "Reduces gum pockets to make cleaning easier",
+      "Improves aesthetics by correcting 'gummy' smiles",
+    ],
+  },
+  {
+    id: "in-house-opg",
+    name: "In-House OPG & Full Mouth X-Ray",
+    category: "General",
+    duration: "10 Mins",
+    expectText: "State-of-the-art Orthopantomogram (OPG) digital imaging right inside our clinic. Provides a panoramic, high-resolution view of your entire mouth, teeth, upper/lower jawbones, and sinuses in seconds.",
+    benefits: [
+      "Fast, immediate diagnostics without sending you outside",
+      "Extremely low radiation exposure compared to film X-rays",
+      "Essential for planning implants, wisdom teeth, and RCTs",
+      "Allows comprehensive visualization of hidden bone issues",
+    ],
+  },
+  {
+    id: "dental-scanner",
+    name: "Intraoral Dental Scanner",
+    category: "General",
+    duration: "10 - 15 Mins",
+    expectText: "High-precision digital impressions utilizing our advanced intraoral scanner. Say goodbye to uncomfortable, gooey physical mold putties; this scanner captures thousands of points per second to create a perfect 3D digital model.",
+    benefits: [
+      "No gagging or discomfort from traditional putty molds",
+      "Extremely accurate 3D representations for crowns/aligners",
+      "Faster turnaround times for orthodontic and prosthetic work",
+      "Immediate interactive 3D visualization of your bite",
     ],
   },
 ];
@@ -92,7 +195,7 @@ export default function Services() {
         className="text-center max-w-3xl mx-auto space-y-4 pt-6"
       >
         <span className="text-primary font-bold text-xs uppercase tracking-widest block">
-          SmileCare Treatments
+          Smile Gallery Treatments
         </span>
         <h1 className="font-display font-bold text-4xl sm:text-5xl text-slate-900 leading-tight">
           Comprehensive Clinical Excellence
@@ -111,7 +214,8 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.45, delay: index * 0.1, ease: "easeOut" }}
-            className="bg-slate-50 border border-slate-100 rounded-2xl p-6 text-center hover:-translate-y-1 transition-all duration-300 shadow-sm"
+            whileHover={{ y: -4 }}
+            className="bg-slate-50 border border-slate-100 rounded-2xl p-6 text-center shadow-sm hover:shadow-md hover:border-primary/20 transition-[box-shadow,border-color] duration-300"
           >
             <span className="inline-block px-3 py-1 bg-white rounded-full text-slate-500 border border-slate-100 text-xs font-semibold uppercase tracking-wider mb-3">
               Treatment Unit
@@ -194,12 +298,12 @@ export default function Services() {
           Dental health varies per individual. Schedule an initial clean or diagnostic scan and our expert dental staff will detail a custom payment and care package.
         </p>
         <div className="pt-2">
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary hover:bg-primary-hover text-white font-semibold text-sm transition-colors duration-300 shadow-md"
+          <a
+            href="tel:+919819300553"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-primary hover:bg-primary-hover text-white font-semibold text-sm transition-colors duration-300 shadow-md cursor-pointer"
           >
-            Start Your Consultation
-          </Link>
+            Call for Consultation
+          </a>
         </div>
       </motion.section>
     </div>

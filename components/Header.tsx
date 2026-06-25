@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function Header() {
@@ -39,25 +40,16 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="bg-primary text-white p-2 rounded-xl group-hover:scale-105 transition-transform duration-300 flex items-center justify-center">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-6 h-6"
-              >
-                <path d="M12 2C6.5 2 2 6.5 2 12c0 2.5 1 4.8 2.5 6.5C5.8 20 8.5 22 12 22s6.2-2 7.5-3.5c1.5-1.7 2.5-4 2.5-6.5 0-5.5-4.5-10-10-10z" />
-                <path d="M12 6c-2 0-3 1.5-3 3.5s1 3.5 3 3.5 3-1.5 3-3.5S14 6 12 6z" />
-                <path d="M9 16c2 1 4 1 6 0" />
-              </svg>
-            </div>
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <Image
+              src="/logo.svg"
+              alt="Smile Gallery Logo"
+              width={40}
+              height={40}
+              className="group-hover:scale-105 transition-transform duration-300 shrink-0"
+            />
             <span className="font-display font-bold text-xl tracking-tight text-slate-900">
-              Smile<span className="text-primary">Care</span>
+              Smile<span className="text-primary">Gallery</span>
             </span>
           </Link>
 
@@ -81,13 +73,16 @@ export default function Header() {
 
           {/* Action CTA & Mobile Burger */}
           <div className="flex items-center gap-4">
-            <Link
-              href="/contact"
-              className="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-primary hover:bg-primary-hover text-white font-sans font-semibold text-sm transition-all duration-300 shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5"
+            <a
+              href="tel:+919819300553"
+              className="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-primary hover:bg-primary-hover text-white font-sans font-semibold text-sm transition-all duration-300 shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5 gap-2"
               id="header-cta"
             >
-              Book Appointment
-            </Link>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.127-4.105-6.93-6.93l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+              </svg>
+              Call to Book
+            </a>
 
             {/* Mobile Menu Trigger */}
             <button
@@ -146,9 +141,18 @@ export default function Header() {
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex items-center justify-between mb-8">
-            <span className="font-display font-bold text-lg text-slate-900">
-              Smile<span className="text-primary">Care</span>
-            </span>
+            <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center gap-2 group">
+              <Image
+                src="/logo.svg"
+                alt="Smile Gallery Logo"
+                width={32}
+                height={32}
+                className="shrink-0"
+              />
+              <span className="font-display font-bold text-lg text-slate-900">
+                Smile<span className="text-primary">Gallery</span>
+              </span>
+            </Link>
             <button
               onClick={() => setIsMobileMenuOpen(false)}
               className="p-1 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
@@ -191,17 +195,34 @@ export default function Header() {
           <div className="pt-6 border-t border-slate-100 flex flex-col gap-4">
             <div className="text-xs text-slate-400 text-center font-sans">
               Need immediate help? Call us at
-              <a href="tel:+15551234567" className="block text-sm font-semibold text-slate-700 mt-1">
-                +1 (555) 123-4567
+              <a href="tel:+919819300553" className="block text-sm font-semibold text-slate-700 mt-1 hover:text-primary transition-colors">
+                +91 98193 00553
+              </a>
+              <a href="tel:+919326785438" className="block text-sm font-semibold text-slate-700 hover:text-primary transition-colors">
+                +91 93267 85438
               </a>
             </div>
-            <Link
-              href="/contact"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="w-full py-3 rounded-xl bg-primary text-white text-center font-sans font-semibold text-sm shadow-md hover:bg-primary-hover transition-colors"
+            <a
+              href="tel:+919819300553"
+              className="w-full py-3 rounded-xl bg-primary text-white text-center font-sans font-semibold text-sm shadow-md hover:bg-primary-hover transition-colors flex items-center justify-center gap-2"
             >
-              Book Appointment
-            </Link>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-4 h-4">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.127-4.105-6.93-6.93l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+              </svg>
+              Call to Book
+            </a>
+            <a
+              href="https://wa.me/message/MIPWG2AVM2GWC1"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="w-full py-3 rounded-xl bg-[#25D366] text-white text-center font-sans font-semibold text-sm shadow-md hover:bg-[#1da850] transition-colors flex items-center justify-center gap-2"
+            >
+              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.48 2 12c0 1.74.46 3.37 1.25 4.79L2 22l5.39-1.21A9.93 9.93 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm4.93 13.48c-.2.56-.99 1.04-1.62 1.18-.43.09-.99.17-2.88-.62-2.42-1.01-3.97-3.46-4.09-3.62-.12-.16-.96-1.28-.96-2.44 0-1.16.6-1.73.82-1.97.21-.23.46-.29.62-.29.16 0 .31 0 .45.01.14.01.33-.05.52.4.2.46.68 1.66.74 1.78.06.12.1.26.02.42-.08.16-.12.26-.24.4-.12.14-.25.31-.36.42-.12.12-.24.25-.1.49.14.23.62.97 1.33 1.57.91.81 1.68 1.06 1.92 1.18.23.12.37.1.51-.06.14-.16.59-.69.75-.93.16-.23.31-.19.52-.12.21.08 1.35.64 1.58.75.23.12.39.17.45.27.06.1.06.57-.14 1.12z"/>
+              </svg>
+              WhatsApp Us
+            </a>
           </div>
         </div>
       </div>

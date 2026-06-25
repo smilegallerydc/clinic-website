@@ -1,24 +1,25 @@
 "use client";
 
 import InteractiveTeam from "@/components/InteractiveTeam";
+import Gallery from "@/components/Gallery";
 import { motion } from "framer-motion";
 
 export default function About() {
   const timelineMilestones = [
     {
-      year: "2010",
+      year: "2011",
       title: "Clinic Foundation",
-      description: "SmileCare was opened in the Chicago Medical District, focusing on general family dental health and comforting patient-first environments.",
+      description: "Smile Gallery Dental Clinic was established on L.T. Road in Borivali West, Mumbai, under Dr. Hetal Chheda, B.D.S., dedicated to premium, painless family dentistry.",
     },
     {
-      year: "2016",
-      title: "Advanced Cosmetic Expansion",
-      description: "Dr. Sarah Evans expanded the clinic's focus to cosmetic smile restoration, cosmetic porcelain work, and laser dental therapies.",
+      year: "2017",
+      title: "Advanced Cosmetic & Implant Dentistry",
+      description: "Expanded clinical offerings to include modern dental implants, smile designing/aesthetic laminates, and advanced restorative procedures.",
     },
     {
-      year: "2022",
-      title: "100% Digital Upgrade",
-      description: "Completed full modernization. Swapped physical teeth impressions with intraoral 3D scans and added high-fidelity sedation care.",
+      year: "2023",
+      title: "Modern Digital Upgrades",
+      description: "Transitioned to full digital diagnostic imaging and advanced painless treatments, ensuring the highest standards of safety, sterilization, and care.",
     },
   ];
 
@@ -130,6 +131,11 @@ export default function About() {
             </motion.div>
           ))}
         </div>
+      </section>
+
+      {/* 5. Visual Tour Gallery */}
+      <section className="pt-4 pb-12">
+        <Gallery />
       </section>
     </div>
   );

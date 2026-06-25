@@ -17,15 +17,15 @@ const urbanist = Urbanist({
 });
 
 export const metadata: Metadata = {
-  title: "SmileCare Dental Practice | Premium Dental Clinic Chicago",
-  description: "Experience premium, modern dental care at SmileCare. From general dentistry to orthodontics & cosmetic smile makeovers, our expert team utilizes state-of-the-art tech in Chicago, IL.",
-  keywords: ["dental clinic Chicago", "dentist Chicago", "cosmetic dentistry", "orthodontics", "dental clinic", "teeth whitening", "invisalign", "root canal", "dental implants"],
+  title: "Smile Gallery Dental Clinic | Dr. Hetal Chheda Borivali Mumbai",
+  description: "Experience premium, modern dental care at Smile Gallery Dental Clinic, Borivali West. Led by Dr. Hetal Chheda, we specialize in cosmetic smile design, dental implants, and painless laser dentistry.",
+  keywords: ["dental clinic Borivali", "dentist Borivali West", "Dr. Hetal Chheda", "Smile Gallery Dental Clinic", "cosmetic dentistry Mumbai", "dental implants Borivali", "laser dentistry Mumbai", "root canal Borivali"],
   openGraph: {
-    title: "SmileCare Dental Practice | Premium Dental Clinic Chicago",
-    description: "Experience premium, modern dental care at SmileCare. Book your appointment online today.",
+    title: "Smile Gallery Dental Clinic | Dr. Hetal Chheda Borivali Mumbai",
+    description: "Experience premium, modern dental care at Smile Gallery Dental Clinic, Borivali West. Book your appointment online today.",
     type: "website",
     locale: "en_US",
-    siteName: "SmileCare Dental Practice",
+    siteName: "Smile Gallery Dental Clinic",
   },
 };
 

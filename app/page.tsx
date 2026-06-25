@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Testimonials from "@/components/Testimonials";
+import BeforeAfter from "@/components/BeforeAfter";
 import { motion } from "framer-motion";
 
 export default function Home() {
@@ -29,172 +30,194 @@ export default function Home() {
   return (
     <div className="space-y-20 pb-12">
       {/* 1. Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center bg-white overflow-hidden font-sans pt-12 md:pt-20">
-        {/* Soft Background Gradients */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-primary-light/50 blur-3xl -z-10" />
-        <div className="absolute bottom-10 left-10 w-[300px] h-[300px] rounded-full bg-teal-50/70 blur-3xl -z-10" />
+      <section className="relative min-h-[95vh] flex items-center bg-white overflow-hidden font-sans pt-16 md:pt-24 pb-12">
+        {/* Modern grid background and soft gradients */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,118,110,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,118,110,0.025)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10" />
+        <div className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full bg-primary-light/50 blur-3xl -z-20 animate-[pulse_10s_infinite_alternate]" />
+        <div className="absolute bottom-10 left-10 w-[400px] h-[400px] rounded-full bg-teal-50/70 blur-3xl -z-20" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center">
             {/* Left Column: Content */}
             <motion.div
               variants={heroContainer}
               initial="hidden"
               animate="visible"
-              className="lg:col-span-6 space-y-6 text-slate-800"
+              className="lg:col-span-6 space-y-7 text-slate-800"
             >
               {/* Trust Badge */}
-              <motion.div variants={heroItem} className="flex flex-wrap items-center gap-2.5">
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-light text-primary text-xs font-semibold uppercase tracking-wider border border-primary/10">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                  Accepting New Patients
+              <motion.div variants={heroItem} className="flex flex-wrap items-center gap-3">
+                <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold uppercase tracking-wider border border-emerald-100/80 shadow-sm">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  Next Opening: Today at 2:15 PM
                 </span>
-                <span className="inline-flex items-center gap-1 bg-slate-100 rounded-full px-3 py-1 text-xs text-slate-600 font-medium">
-                  <span className="text-amber-500 font-bold">★ 4.9</span>
-                  <span className="text-slate-400 font-normal ml-1">Google Rating</span>
+                <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-primary-light text-primary text-xs font-semibold uppercase tracking-wider border border-primary/10 shadow-sm">
+                  Accepting New Patients
                 </span>
               </motion.div>
 
               {/* Heading */}
-              <motion.h1 variants={heroItem} className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] tracking-tight text-slate-900">
-                Modern Dental Care for a{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-muted">
-                  Healthy, Confident Smile
-                </span>
+              <motion.h1 variants={heroItem} className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-slate-900">
+                Elevating the <br />
+                <span className="text-gradient">Dental Experience</span> <br />
+                for Your Family.
               </motion.h1>
 
               {/* Paragraph */}
               <motion.p variants={heroItem} className="text-slate-600 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
-                Experience a stress-free approach to oral health. We combine gentle specialists, advanced digital intraoral scans, and transparent pricing in a boutique, spa-like environment.
+                Welcome to Smile Gallery Dental Clinic, Borivali West. Led by Dr. Hetal Chheda, we combine expert artistry, painless laser procedures, and implants to give you the perfect smile.
               </motion.p>
 
-              {/* Checkmarks */}
-              <motion.div variants={heroItem} className="flex flex-wrap gap-x-6 gap-y-2 text-xs sm:text-sm text-slate-600 font-medium pt-2">
-                <div className="flex items-center gap-1.5">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-5 h-5 text-primary"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Certified Invisalign® Provider</span>
+              {/* Mini Trust reviews widget with avatars */}
+              <motion.div variants={heroItem} className="flex items-center gap-4 py-1">
+                <div className="flex -space-x-3">
+                  <div className="w-10 h-10 rounded-full border-2 border-white bg-teal-50 text-primary flex items-center justify-center font-bold text-xs">SJ</div>
+                  <div className="w-10 h-10 rounded-full border-2 border-white bg-amber-50 text-accent flex items-center justify-center font-bold text-xs">MC</div>
+                  <div className="w-10 h-10 rounded-full border-2 border-white bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-xs">ER</div>
                 </div>
-                <div className="flex items-center gap-1.5">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                    className="w-5 h-5 text-primary"
+                <div>
+                  <a 
+                    href="https://g.page/r/CTDlFtXtThK6EBM/review"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex flex-col align-start"
                   >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span>Anxiety-Free Sedation Options</span>
+                    <div className="flex items-center gap-0.5">
+                      {[...Array(5)].map((_, i) => (
+                        <span key={i} className="text-amber-500 text-sm">★</span>
+                      ))}
+                      <span className="text-slate-800 text-sm font-bold ml-1.5 group-hover:text-primary transition-colors">4.9/5</span>
+                    </div>
+                    <p className="text-slate-500 text-xs mt-0.5 group-hover:underline decoration-primary">Leave us a review on Google Business</p>
+                  </a>
                 </div>
               </motion.div>
 
               {/* CTAs */}
               <motion.div variants={heroItem} className="flex flex-wrap items-center gap-4 pt-2">
-                <Link
-                  href="/contact"
-                  className="px-8 py-3.5 rounded-full bg-primary hover:bg-primary-hover text-white font-semibold text-sm transition-all duration-300 shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20 hover:-translate-y-0.5"
+                <a
+                  href="tel:+919819300553"
+                  className="relative inline-flex items-center justify-center px-8 py-4 rounded-full bg-primary text-white font-semibold text-sm transition-all duration-300 hover:bg-primary-hover shadow-lg shadow-primary/10 hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-0.5 btn-hover-effect overflow-hidden group cursor-pointer"
                 >
-                  Request Appointment
-                </Link>
-                <Link
-                  href="/services"
-                  className="px-8 py-3.5 rounded-full border border-slate-300 hover:border-primary text-slate-700 hover:text-primary font-semibold text-sm transition-all duration-300 hover:-translate-y-0.5"
+                  <span className="relative z-10 flex items-center gap-2">
+                    Call for Appointment
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-4 h-4 group-hover:scale-110 transition-transform">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.127-4.105-6.93-6.93l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                    </svg>
+                  </span>
+                </a>
+                <a
+                  href="https://wa.me/message/MIPWG2AVM2GWC1"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-4 rounded-full border border-slate-200 text-slate-700 font-semibold text-sm transition-all duration-300 hover:border-[#25D366] hover:text-[#25D366] hover:bg-green-50 hover:-translate-y-0.5 inline-flex items-center gap-2"
                 >
-                  View Treatments
-                </Link>
+                  <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.74.46 3.37 1.25 4.79L2 22l5.39-1.21A9.93 9.93 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm4.93 13.48c-.2.56-.99 1.04-1.62 1.18-.43.09-.99.17-2.88-.62-2.42-1.01-3.97-3.46-4.09-3.62-.12-.16-.96-1.28-.96-2.44 0-1.16.6-1.73.82-1.97.21-.23.46-.29.62-.29.16 0 .31 0 .45.01.14.01.33-.05.52.4.2.46.68 1.66.74 1.78.06.12.1.26.02.42-.08.16-.12.26-.24.4-.12.14-.25.31-.36.42-.12.12-.24.25-.1.49.14.23.62.97 1.33 1.57.91.81 1.68 1.06 1.92 1.18.23.12.37.1.51-.06.14-.16.59-.69.75-.93.16-.23.31-.19.52-.12.21.08 1.35.64 1.58.75.23.12.39.17.45.27.06.1.06.57-.14 1.12z"/>
+                  </svg>
+                  <span>WhatsApp Us</span>
+                </a>
               </motion.div>
 
               {/* Stats */}
               <motion.div
                 variants={heroItem}
-                className="grid grid-cols-3 gap-4 pt-8 border-t border-slate-100 max-w-md text-left"
+                className="grid grid-cols-3 gap-6 pt-6 border-t border-slate-100 max-w-md text-left"
               >
                 <div>
-                  <h4 className="font-display font-bold text-2xl text-slate-900">15k+</h4>
-                  <p className="text-slate-500 text-xs mt-0.5">Happy Smiles</p>
+                  <h4 className="font-display font-black text-2xl sm:text-3xl text-slate-900">15k+</h4>
+                  <p className="text-slate-500 text-xs mt-1">Happy Smiles</p>
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-2xl text-slate-900">15+</h4>
-                  <p className="text-slate-500 text-xs mt-0.5">Years Practice</p>
+                  <h4 className="font-display font-black text-2xl sm:text-3xl text-slate-900">15+</h4>
+                  <p className="text-slate-500 text-xs mt-1">Years Practice</p>
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-2xl text-slate-900">99.8%</h4>
-                  <p className="text-slate-500 text-xs mt-0.5">Satisfaction</p>
+                  <h4 className="font-display font-black text-2xl sm:text-3xl text-slate-900">99.8%</h4>
+                  <p className="text-slate-500 text-xs mt-1">Satisfaction</p>
                 </div>
               </motion.div>
             </motion.div>
 
-            {/* Right Column: Visual Block */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.65, ease: "easeOut", delay: 0.15 }}
-              className="lg:col-span-6 relative flex justify-center lg:justify-end"
-            >
-              <div className="relative w-full max-w-[500px] aspect-[4/3] sm:aspect-square rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white bg-slate-100 group">
-                <Image
-                  src="/hero.jpg"
-                  alt="SmileCare Dental Clinic Reception Desk"
-                  fill
-                  priority
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-                />
+            {/* Right Column: Layered Editorial Collage */}
+            <div className="lg:col-span-6 relative flex justify-center lg:justify-end">
+              <div className="relative w-full max-w-[500px] aspect-[4/5] sm:aspect-square md:aspect-[4/5] flex items-center justify-center">
+                {/* Background accent soft shape */}
+                <div className="absolute top-[10%] left-[5%] w-[85%] h-[80%] rounded-[3rem] bg-gradient-to-tr from-primary-light to-teal-50 -z-10 rotate-3" />
+
+                {/* Main Image: Clinic Lobby (hero.jpg) */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30, rotate: -2 }}
+                  animate={{ opacity: 1, y: 0, rotate: -2 }}
+                  transition={{ duration: 0.7, ease: "easeOut", delay: 0.25 }}
+                  className="absolute top-0 left-2 w-[65%] aspect-[3/4] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white z-10 group bg-slate-100"
+                >
+                  <Image
+                    src="/hero.jpg"
+                    alt="Smile Gallery Dental Clinic Reception"
+                    fill
+                    priority
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  />
+                </motion.div>
+
+                {/* Secondary Overlapping Image: Doctor & Patient (doctor.jpg) */}
+                <motion.div
+                  initial={{ opacity: 0, y: 40, x: 20, rotate: 2 }}
+                  animate={{ opacity: 1, y: 0, x: 0, rotate: 2 }}
+                  transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 }}
+                  className="absolute bottom-6 right-2 w-[58%] aspect-[4/3] rounded-[1.5rem] overflow-hidden shadow-2xl border-8 border-white z-20 group bg-slate-100"
+                >
+                  <Image
+                    src="/doctor.jpg"
+                    alt="Dr. Hetal Chheda Consulting Patient"
+                    fill
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  />
+                </motion.div>
+
+                {/* Floating Decorative Reviews Badge */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.65, duration: 0.4 }}
+                  className="absolute top-[20%] right-[-10px] z-30 bg-white/90 backdrop-blur shadow-xl border border-slate-100 p-4 rounded-2xl flex items-center gap-3 max-w-[190px] pointer-events-none"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center font-bold text-lg">
+                    ★
+                  </div>
+                  <div>
+                    <span className="block font-bold text-sm text-slate-800">Top Rated</span>
+                    <span className="block text-[10px] text-slate-400">Borivali West, Mumbai</span>
+                  </div>
+                </motion.div>
+
+                {/* Floating Technology Badge */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.75, duration: 0.4 }}
+                  className="absolute bottom-[20%] left-[-20px] z-30 bg-white/90 backdrop-blur shadow-xl border border-slate-100 p-4 rounded-2xl flex items-center gap-3 max-w-[210px] pointer-events-none"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-teal-50 text-primary flex items-center justify-center shrink-0">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2.5"
+                      stroke="currentColor"
+                      className="w-5 h-5 animate-pulse"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39 0.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span className="block font-bold text-sm text-slate-800">Advanced Tech</span>
+                    <span className="block text-[10px] text-slate-400">3D Diagnostic Scanners</span>
+                  </div>
+                </motion.div>
               </div>
-
-              {/* Overlapping Decorative Cards */}
-              <motion.div
-                initial={{ opacity: 0, x: 20, y: -20 }}
-                animate={{ opacity: 1, x: 0, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className="absolute top-8 -right-4 bg-white/95 backdrop-blur shadow-xl border border-slate-50 p-4 rounded-2xl flex items-center gap-3 max-w-[200px]"
-              >
-                <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center font-bold text-lg">
-                  ★
-                </div>
-                <div>
-                  <span className="block font-bold text-sm text-slate-800">Top Rated</span>
-                  <span className="block text-[10px] text-slate-400">Chicago Dental Practice</span>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -20, y: 20 }}
-                animate={{ opacity: 1, x: 0, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                className="absolute -bottom-6 -left-4 bg-white/95 backdrop-blur shadow-xl border border-slate-50 p-4 rounded-2xl flex items-center gap-3 max-w-[220px]"
-              >
-                <div className="w-10 h-10 rounded-xl bg-teal-50 text-primary flex items-center justify-center shrink-0">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2.5"
-                    stroke="currentColor"
-                    className="w-5 h-5"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39 0.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
-                  </svg>
-                </div>
-                <div>
-                  <span className="block font-bold text-sm text-slate-800">Advanced Tech</span>
-                  <span className="block text-[10px] text-slate-400">3D Diagnostic Scanners</span>
-                </div>
-              </motion.div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -213,7 +236,7 @@ export default function Home() {
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl z-10 border border-slate-100">
               <Image
                 src="/doctor.jpg"
-                alt="Dr. Sarah Evans Consulting Patient"
+                alt="Dr. Hetal Chheda Consulting Patient"
                 fill
                 className="object-cover object-center"
               />
@@ -232,16 +255,16 @@ export default function Home() {
             className="lg:col-span-7 space-y-6"
           >
             <span className="text-primary font-bold text-xs uppercase tracking-widest block">
-              About SmileCare Practice
+              About Smile Gallery
             </span>
             <h2 className="font-display font-bold text-3xl sm:text-4xl text-slate-900 leading-tight">
-              A Warm Welcome to a Different Kind of Dental Experience
+              Where Dentistry Meets Artistry – Dr. Hetal Chheda
             </h2>
             <p className="text-slate-600 text-base leading-relaxed">
-              We believe dental care should be stress-free, pain-free, and personalized to your unique health goals. Under the guidance of <strong>Dr. Sarah Evans, D.D.S.</strong>, our practice provides a patient-first experience utilizing diagnostic modern tech like digital intraoral scans and gentle laser therapies.
+              We believe dental care should be stress-free, pain-free, and personalized to your unique health goals. Under the guidance of <strong>Dr. Hetal Chheda (Cosmetic Dentist & Implantologist)</strong>, our practice provides a patient-first experience utilizing diagnostic modern tech like digital X-rays and gentle laser therapies.
             </p>
             <p className="text-slate-600 text-base leading-relaxed">
-              From cosmetic makeovers to pediatric checkups, our focus remains on long-term preventive wellness and restoring functionality in a luxurious, relaxing atmosphere.
+              From cosmetic veneers and laminates, orthodontic aligners, and dental implants to pain-free gum therapy, our goal is to help you achieve your dream smile in a warm, relaxing atmosphere.
             </p>
             
             <div className="pt-2">
@@ -288,7 +311,8 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: 0.05, ease: "easeOut" }}
-              className="bg-white rounded-3xl p-8 border border-slate-200/50 shadow-sm hover:shadow-md transition-all duration-300 group flex flex-col justify-between h-[360px]"
+              whileHover={{ y: -6 }}
+              className="bg-white rounded-3xl p-8 border border-slate-200/50 shadow-sm hover:shadow-md hover:border-primary/25 transition-[box-shadow,border-color] duration-300 group flex flex-col justify-between h-[360px]"
             >
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-teal-50 text-primary flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -338,7 +362,8 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              className="bg-white rounded-3xl p-8 border border-slate-200/50 shadow-sm hover:shadow-md transition-all duration-300 group flex flex-col justify-between h-[360px]"
+              whileHover={{ y: -6 }}
+              className="bg-white rounded-3xl p-8 border border-slate-200/50 shadow-sm hover:shadow-md hover:border-primary/25 transition-[box-shadow,border-color] duration-300 group flex flex-col justify-between h-[360px]"
             >
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-amber-50 text-accent flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -388,7 +413,8 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: 0.35, ease: "easeOut" }}
-              className="bg-white rounded-3xl p-8 border border-slate-200/50 shadow-sm hover:shadow-md transition-all duration-300 group flex flex-col justify-between h-[360px]"
+              whileHover={{ y: -6 }}
+              className="bg-white rounded-3xl p-8 border border-slate-200/50 shadow-sm hover:shadow-md hover:border-primary/25 transition-[box-shadow,border-color] duration-300 group flex flex-col justify-between h-[360px]"
             >
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
@@ -449,6 +475,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Before & After Cases */}
+      <BeforeAfter />
 
       {/* 4. Testimonials Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans py-4 space-y-12">

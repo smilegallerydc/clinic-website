@@ -4,12 +4,14 @@
   --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
   --font-display: var(--font-urbanist), system-ui, -apple-system, sans-serif;
   
-  --color-primary: #0f766e; /* Deep Forest Teal */
-  --color-primary-hover: #115e59; /* Rich Teal */
-  --color-primary-light: #f0fdfa; /* Soft Teal Hint */
-  --color-primary-muted: #14b8a6; /* Bright Accent Teal */
-  --color-accent: #d97706; /* Dental Gold Accent */
-  --color-slate-900: #0f172a; /* Custom Charcoal Blue */
+  /* Brand colors — matching logo pink/magenta gradient */
+  --color-primary: #d92662;       /* Logo pink */
+  --color-primary-hover: #b81f52; /* Darker pink hover */
+  --color-primary-light: #fdf2f7; /* Very soft pink tint */
+  --color-primary-muted: #f06292; /* Lighter warm pink */
+  --color-accent: #9d268d;        /* Logo purple accent */
+  --color-accent-light: #f5eef8;  /* Soft purple tint */
+  --color-slate-900: #0f172a;
   --color-slate-800: #1e293b;
   --color-slate-700: #334155;
   --color-slate-100: #f1f5f9;
@@ -45,9 +47,10 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+  background: linear-gradient(135deg, #d92662 0%, #9d268d 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .btn-hover-effect {
@@ -84,10 +87,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #f9a8c9;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0f766e;
+  background: #d92662;
 }

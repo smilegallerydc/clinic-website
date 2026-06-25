@@ -18,23 +18,23 @@ interface Doctor {
 const teamData: Doctor[] = [
   {
     id: 1,
-    name: "Dr. Sarah Evans, D.D.S.",
-    role: "Lead Cosmetic & General Dentist",
-    education: "Northwestern University Dental School (Class of '10)",
-    bio: "Dr. Evans has over 15 years of dental practice experience, specializing in cosmetic smile makeovers, porcelain veneers, and reconstructive dentistry. She is dedicated to combining clinical excellence with a gentle, patient-first approach to make every dental visit relaxing and positive.",
-    quote: "My goal is to give you a smile that not only looks stunning but also improves your overall wellness and confidence.",
+    name: "Dr. Hetal Chheda, B.D.S.",
+    role: "Chief Dental Surgeon, Cosmetic & Implantologist",
+    education: "Experienced Clinical Practitioner (Cosmetic & Implants)",
+    bio: "Dr. Hetal Chheda is the founder and chief surgeon at Smile Gallery. With extensive experience in cosmetic smile redesign, dental implants, and laser therapies, she is dedicated to combining medical artistry with painless, patient-first care. She specializes in full mouth rehabilitation, laminates, and root canal therapies.",
+    quote: "My mission is to help you achieve your dream smile through advanced, painless, and highly personalized dental care. Everyone deserves the perfect smile.",
     image: "/doctor.jpg",
-    skills: ["Smile Makeovers", "Porcelain Veneers", "Teeth Whitening", "Crowns & Bridges"],
+    skills: ["Smile Designing", "Dental Implants", "Laser Dentistry", "Root Canal Therapy"],
   },
   {
     id: 2,
-    name: "Dr. Marcus Vance, Orthodontist",
+    name: "Visiting Orthodontic Consultant",
     role: "Specialist Orthodontist & Invisalign Expert",
-    education: "University of Illinois College of Dentistry (Class of '13)",
-    bio: "Dr. Vance is a board-certified orthodontist specializing in advanced digital orthodontics. He has helped thousands of teens and adults achieve straight, healthy smiles using state-of-the-art clear aligner systems and comfortable traditional brackets.",
-    quote: "Orthodontics is about more than straight teeth; it's about structural health, function, and building a foundation for a lifetime.",
-    image: "/doctor.jpg", // Reusing or styling beautifully
-    skills: ["Invisalign Clear Aligners", "Early Intervention", "Adult Orthodontics", "Surgical Orthodontics"],
+    education: "Partner Endodontists & Orthodontists",
+    bio: "Our clinic partners with top visiting specialists in Mumbai to provide advanced digital orthodontics. We offer state-of-the-art clear aligner systems (Invisalign) and comfortable traditional braces, ensuring comprehensive care under one roof.",
+    quote: "We collaborate with specialized endodontic and orthodontic partners to bring clinical excellence to every complex dental case.",
+    image: "/doctor.jpg",
+    skills: ["Invisalign Clear Aligners", "Early Intervention Orthodontics", "Complex Root Canals", "Surgical Orthodontics"],
   },
 ];
 
