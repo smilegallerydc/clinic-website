@@ -163,6 +163,7 @@ export default function Home() {
                     src="/doctor.jpg"
                     alt="Dr. Hetal Chheda Consulting Patient"
                     fill
+                    priority
                     className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                   />
                 </motion.div>

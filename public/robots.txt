@@ -1,0 +1,7 @@
+# robots.txt — Smile Gallery Dental Clinic
+# https://smilegallerydentalclinic.in
+
+User-agent: *
+Allow: /
+
+Sitemap: https://smilegallerydentalclinic.in/sitemap.xml
