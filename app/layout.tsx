@@ -20,24 +20,43 @@ const urbanist = Urbanist({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://smilegallerydentalclinic.in"),
-  title: "Smile Gallery Dental Clinic | Dr. Hetal Chheda Borivali Mumbai",
-  description: "Experience premium, modern dental care at Smile Gallery Dental Clinic, Borivali West. Led by Dr. Hetal Chheda, we specialize in cosmetic smile design, dental implants, and painless laser dentistry.",
-  keywords: ["dental clinic Borivali", "dentist Borivali West", "Dr. Hetal Chheda", "Smile Gallery Dental Clinic", "cosmetic dentistry Mumbai", "dental implants Borivali", "laser dentistry Mumbai", "root canal Borivali"],
+  title: {
+    default: "Smile Gallery Dental Clinic | Dr. Hetal Chheda – Borivali West, Mumbai",
+    template: "%s | Smile Gallery Dental Clinic Borivali",
+  },
+  description: "Experience premium, modern dental care at Smile Gallery Dental Clinic, Borivali West. Led by Dr. Hetal Chheda (BDS, PGDAOI Implant – France), we specialize in cosmetic smile design, dental implants, and painless laser dentistry.",
+  keywords: ["dental clinic Borivali", "dentist Borivali West", "Dr Hetal Chheda dentist", "Smile Gallery Dental Clinic", "cosmetic dentistry Mumbai", "dental implants Borivali West", "laser dentistry Mumbai", "root canal Borivali", "teeth whitening Borivali", "orthodontics Borivali", "Invisalign Mumbai"],
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   openGraph: {
-    title: "Smile Gallery Dental Clinic | Dr. Hetal Chheda Borivali Mumbai",
-    description: "Experience premium, modern dental care at Smile Gallery Dental Clinic, Borivali West. Book your appointment online today.",
+    title: "Smile Gallery Dental Clinic | Dr. Hetal Chheda – Borivali West, Mumbai",
+    description: "Premium dental care in Borivali West since 2011. Dental implants, smile makeovers, laser dentistry. Call +91 98193 00553.",
     type: "website",
-    locale: "en_US",
+    locale: "en_IN",
     siteName: "Smile Gallery Dental Clinic",
     url: "https://smilegallerydentalclinic.in",
+    images: [
+      {
+        url: "/hero.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Smile Gallery Dental Clinic – Borivali West Mumbai",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Smile Gallery Dental Clinic | Dr. Hetal Chheda – Borivali West",
+    description: "Premium dental care in Borivali West since 2011. Dental implants, smile makeovers, laser dentistry.",
+    images: ["/hero.jpg"],
   },
   alternates: {
     canonical: "https://smilegallerydentalclinic.in",

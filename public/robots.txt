@@ -1,7 +1,13 @@
-# robots.txt — Smile Gallery Dental Clinic
+# robots.txt — Smile Gallery Dental Clinic & Implant Centre
 # https://smilegallerydentalclinic.in
 
+# Allow all search engine crawlers
 User-agent: *
 Allow: /
 
+# Block internal Next.js paths from being indexed
+Disallow: /_next/
+Disallow: /api/
+
+# Sitemap location
 Sitemap: https://smilegallerydentalclinic.in/sitemap.xml
