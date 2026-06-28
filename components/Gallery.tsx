@@ -82,9 +82,9 @@ export default function Gallery() {
 
   // Manually distribute images across 3 columns so portrait images are spread evenly (one per column)
   // Portraits are ids: 6 (col3), 12 (col1), 13 (col2)
-  const col1Ids = [1, 4, 7, 10, 12, 15]; // portrait: 12
+  const col1Ids = [1, 4, 7, 10, 12];     // portrait: 12
   const col2Ids = [2, 5, 8, 11, 13];     // portrait: 13
-  const col3Ids = [3, 6, 9, 14];          // portrait: 6
+  const col3Ids = [3, 6, 9, 14, 15];     // portrait: 6
 
   const col1 = galleryImages.filter((img) => col1Ids.includes(img.id));
   const col2 = galleryImages.filter((img) => col2Ids.includes(img.id));
