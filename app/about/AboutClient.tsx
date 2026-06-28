@@ -1,6 +1,8 @@
 "use client";
 
+import React from "react";
 import Gallery from "@/components/Gallery";
+import BeforeAfter from "@/components/BeforeAfter";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -187,32 +189,56 @@ export default function About() {
       {/* 4. Journey Timeline Section */}
       <section className="bg-slate-50 rounded-3xl p-8 sm:p-12 border border-slate-100 space-y-10">
         <h2 className="font-display font-bold text-2xl text-slate-900 text-center">
-          Our Journey & Growth
+          Our Journey &amp; Growth
         </h2>
 
-        <div className="relative max-w-3xl mx-auto flex flex-col md:flex-row items-stretch justify-between gap-8 md:gap-4">
-          {/* Timeline Connector Line */}
-          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-slate-200 -translate-y-1/2 hidden md:block" />
-
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-0">
           {timelineMilestones.map((milestone, index) => (
-            <motion.div
-              key={milestone.year}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: index * 0.15, ease: "easeOut" }}
-              className="bg-white rounded-2xl p-6 border border-slate-100 relative z-10 flex-1 flex flex-col gap-3 shadow-sm hover:shadow transition-shadow"
-            >
-              <span className="inline-block self-start px-3 py-1 rounded-full bg-primary text-white font-display font-bold text-sm">
-                {milestone.year}
-              </span>
-              <h4 className="font-display font-semibold text-slate-800 text-base leading-tight">
-                {milestone.title}
-              </h4>
-              <p className="text-slate-500 text-xs leading-relaxed font-sans">
-                {milestone.description}
-              </p>
-            </motion.div>
+            <React.Fragment key={milestone.year}>
+              {/* Milestone Card */}
+              <motion.div
+                key={milestone.year}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: index * 0.15, ease: "easeOut" }}
+                className="bg-white rounded-2xl p-6 border border-slate-100 relative z-10 flex-1 flex flex-col gap-3 shadow-sm hover:shadow-md hover:border-primary/20 transition-all duration-300 w-full"
+              >
+                <span className="inline-block self-start px-3 py-1 rounded-full bg-primary text-white font-display font-bold text-sm">
+                  {milestone.year}
+                </span>
+                <h4 className="font-display font-semibold text-slate-800 text-base leading-tight">
+                  {milestone.title}
+                </h4>
+                <p className="text-slate-500 text-xs leading-relaxed font-sans">
+                  {milestone.description}
+                </p>
+              </motion.div>
+
+              {/* Arrow connector — shown between cards, not after the last one */}
+              {index < timelineMilestones.length - 1 && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.35, delay: index * 0.15 + 0.2, ease: "easeOut" }}
+                  className="flex-shrink-0 flex items-center justify-center z-20"
+                >
+                  {/* Right arrow on desktop */}
+                  <div className="hidden md:flex w-10 h-10 items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" className="w-7 h-7 text-primary drop-shadow-sm">
+                      <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  {/* Down arrow on mobile */}
+                  <div className="flex md:hidden w-10 h-10 items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" className="w-7 h-7 text-primary drop-shadow-sm">
+                      <path d="M12 5v14M6 13l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                </motion.div>
+              )}
+            </React.Fragment>
           ))}
         </div>
       </section>
