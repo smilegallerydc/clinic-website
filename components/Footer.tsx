@@ -233,13 +233,19 @@ export default function Footer() {
                 <span>Ground Floor, Flat No. 1, Arvind Apartment, L.T. Road, Opp. P.N.G. Jewellers, Next to Swiss Paradise, Borivali West, Mumbai – 400092</span>
               </p>
               {/* Interactive Map — clicking opens Google Maps app */}
-              <a
-                href="https://goo.gl/maps/nDTsnEUyR1D2"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block w-full h-52 rounded-xl overflow-hidden relative border border-slate-700 bg-slate-800 group cursor-pointer"
-                aria-label="Open clinic location in Google Maps"
-              >
+              {/* Interactive Map — clicking opens Google Maps app */}
+              <div className="w-full h-52 rounded-xl overflow-hidden relative border border-slate-700 bg-slate-800 group cursor-pointer">
+                {/* Entire map container acts as link on mobile/desktop, disabling map pointer events to avoid scroll locks */}
+                <a
+                  href="https://goo.gl/maps/nDTsnEUyR1D2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0 z-10"
+                  aria-label="Open clinic location in Google Maps"
+                >
+                  <span className="sr-only">Open in Map App</span>
+                </a>
+                
                 <iframe
                   title="Smile Gallery Dental Clinic Map"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.8812678680795!2d72.85244517610014!3d19.231050787002012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b12f6c91a0ef%3A0xe54d241d720c242c!2sSmile%20Gallery%20Dental%20Clinic!5e0!3m2!1sen!2sin!4v1719310000000!5m2!1sen!2sin"
@@ -249,17 +255,31 @@ export default function Footer() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-                {/* Overlay — "Open in Maps" hint */}
-                <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/20 transition-colors duration-300 flex items-center justify-center">
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-slate-900 text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg flex items-center gap-1.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-3.5 h-3.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+
+                {/* Custom Pin Overlay centered over the clinic coordinate */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none flex flex-col items-center z-20">
+                  {/* Pulse ring animation */}
+                  <div className="absolute w-12 h-12 bg-primary/20 rounded-full animate-ping" />
+                  {/* Pin Head */}
+                  <div className="w-8 h-8 rounded-full bg-primary border-2 border-white flex items-center justify-center shadow-lg relative z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-4 h-4 text-white">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 2C6.5 2 2 6.5 2 12c0 2.5 1 4.8 2.5 6.5C5.8 20 8.5 22 12 22s6.2-2 7.5-3.5c1.5-1.7 2.5-4 2.5-6.5 0-5.5-4.5-10-10-10zM12 6c-2 0-3 1.5-3 3.5s1 3.5 3 3.5 3-1.5 3-3.5S14 6 12 6z" />
                     </svg>
-                    Open in Maps
-                  </span>
+                  </div>
+                  {/* Pin Tip */}
+                  <div className="w-2 h-2 bg-primary rotate-45 -mt-1 border-r border-b border-white relative z-10" />
+                  
+                  {/* Clinic custom label */}
+                  <div className="mt-1 bg-slate-900/90 text-white text-[10px] font-bold py-1 px-2.5 rounded-full shadow-md backdrop-blur-sm whitespace-nowrap border border-white/10 relative z-10 group-hover:scale-105 transition-transform duration-300">
+                    Smile Gallery
+                  </div>
                 </div>
-              </a>
+
+                {/* Soft overlay stating tap instruction */}
+                <div className="absolute bottom-2 right-2 bg-white/95 backdrop-blur-sm text-slate-800 text-[10px] font-semibold py-1.5 px-3 rounded-xl shadow-md border border-slate-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 font-sans">
+                  Tap to open in Map App 🗺️
+                </div>
+              </div>
             </div>
           </div>
         </div>
