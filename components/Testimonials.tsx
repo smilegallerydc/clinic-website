@@ -41,6 +41,33 @@ const testimonialsData: Testimonial[] = [
     text: "Smile Gallery Dental Clinic provides professional, gentle, and reliable dental care with modern facilities and a supportive team. They explained every detail and made the treatment completely comfortable.",
     avatarBg: "bg-indigo-100 text-indigo-800",
   },
+  {
+    id: 4,
+    name: "Rajesh Mehta",
+    role: "Google Reviewer",
+    rating: 5,
+    treatment: "Root Canal Treatment",
+    text: "I was extremely scared of getting a root canal, but Dr. Hetal made the entire procedure completely painless. She explained the digital X-ray in detail and completed the root canal in a single sitting. Highly recommend her!",
+    avatarBg: "bg-emerald-100 text-emerald-800",
+  },
+  {
+    id: 5,
+    name: "Kiran Patel",
+    role: "Google Reviewer",
+    rating: 5,
+    treatment: "Invisalign® Aligners",
+    text: "Excellent experience at Smile Gallery for my Invisalign aligners. The 3D dental scanner is amazing; no messy putties. The custom aligners fit perfectly and my teeth alignment has improved dramatically.",
+    avatarBg: "bg-rose-100 text-rose-800",
+  },
+  {
+    id: 6,
+    name: "Sanjana Sen",
+    role: "Google Reviewer",
+    rating: 5,
+    treatment: "Cosmetic Veneers",
+    text: "Dr. Hetal is an artist! I got porcelain veneers done for my front teeth, and my smile has completely changed. She was very patient and ensured the color and fit were natural. The clinic maintains top-notch sterilization.",
+    avatarBg: "bg-cyan-100 text-cyan-800",
+  },
 ];
 
 export default function Testimonials() {

@@ -77,9 +77,9 @@ export default function Home() {
                       {[...Array(5)].map((_, i) => (
                         <span key={i} className="text-amber-500 text-sm">★</span>
                       ))}
-                      <span className="text-slate-800 text-sm font-bold ml-1.5 group-hover:text-primary transition-colors">4.9/5</span>
+                      <span className="text-slate-800 text-sm font-bold ml-1.5 group-hover:text-primary transition-colors">4.9/5 (180+ Google Reviews)</span>
                     </div>
-                    <p className="text-slate-500 text-xs mt-0.5 group-hover:underline decoration-primary">Leave us a review on Google Business</p>
+                    <p className="text-slate-500 text-xs mt-0.5 group-hover:underline decoration-primary">Verified patient ratings on Google Maps</p>
                   </a>
                 </div>
               </motion.div>
@@ -479,6 +479,10 @@ export default function Home() {
           <h2 className="font-display font-bold text-3xl text-slate-900">
             Over a Thousand Happy Smiles
           </h2>
+          <div className="flex items-center justify-center gap-1.5 text-xs sm:text-sm text-slate-700 font-semibold">
+            <span className="text-amber-500 flex gap-0.5">★★★★★</span>
+            <span className="text-slate-800">4.9/5 Rating (180+ Google Reviews)</span>
+          </div>
           <p className="text-slate-500 text-sm">
             Read stories from individuals and families who experienced our caring, state-of-the-art approach.
           </p>
