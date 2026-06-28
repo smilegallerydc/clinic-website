@@ -18,16 +18,16 @@ const galleryImages: GalleryImage[] = [
   { id: 3, src: "/gallery/gallery-3.jpg", aspect: "aspect-[16/9]", type: "landscape", alt: "Smile Gallery reception lobby with orthodontic treatment displays" },
   { id: 4, src: "/gallery/gallery-4.jpg", aspect: "aspect-[16/9]", type: "landscape", alt: "Reception area showing case transformations and sterilization room background" },
   { id: 5, src: "/gallery/gallery-5.jpg", aspect: "aspect-[16/9]", type: "landscape", alt: "Clinic workstation showing a digital panoramic teeth X-ray" },
-  { id: 6, src: "/gallery/gallery-6.jpg", aspect: "aspect-[9/16]", type: "portrait", alt: "Dr. Hetal Chheda at her consultation desk with clinical assistants" },
+  { id: 6, src: "/gallery/gallery-6.jpg", aspect: "aspect-[3/4]", type: "portrait", alt: "Dr. Hetal Chheda at her consultation desk with clinical assistants" },
   { id: 7, src: "/gallery/gallery-7.jpg", aspect: "aspect-[16/9]", type: "landscape", alt: "Dr. Hetal Chheda reviewing diagnostic scans at her desk with assistants" },
   { id: 8, src: "/gallery/gallery-8.jpg", aspect: "aspect-[4/3]", type: "landscape", alt: "Dr. Hetal Chheda next to qualifications board listing BDS and implant certifications" },
   { id: 9, src: "/gallery/gallery-9.jpg", aspect: "aspect-[16/9]", type: "landscape", alt: "Dr. Hetal Chheda outside the entrance with her clinic team" },
   { id: 10, src: "/gallery/gallery-10.jpg", aspect: "aspect-[16/9]", type: "landscape", alt: "Street-view entrance signs and direction banners for the Borivali West clinic" },
   { id: 11, src: "/gallery/gallery-11.jpg", aspect: "aspect-[16/9]", type: "landscape", alt: "Reception desk showing PhonePe QR code payment stand and jaw models" },
-  { id: 12, src: "/gallery/gallery-12.jpg", aspect: "aspect-[9/16]", type: "portrait", alt: "Dr. Hetal Chheda in clinical coat standing by the reception counter" },
-  { id: 13, src: "/gallery/gallery-13.jpg", aspect: "aspect-[9/16]", type: "portrait", alt: "Dr. Hetal Chheda sitting at her desk in front of branding (hands clasped)" },
-  { id: 14, src: "/gallery/gallery-14.jpg", aspect: "aspect-[21/9]", type: "landscape", alt: "Dr. Hetal Chheda at her desk next to the computer showing the clinic founding date (2011)" },
-  { id: 15, src: "/gallery/gallery-15.jpg", aspect: "aspect-[21/9]", type: "landscape", alt: "Team group photo of Dr. Hetal Chheda, associate dentist, and assistants by the testimonial wall" },
+  { id: 12, src: "/gallery/gallery-12.jpg", aspect: "aspect-[3/4]", type: "portrait", alt: "Dr. Hetal Chheda in clinical coat standing by the reception counter" },
+  { id: 13, src: "/gallery/gallery-13.jpg", aspect: "aspect-[3/4]", type: "portrait", alt: "Dr. Hetal Chheda sitting at her desk in front of branding (hands clasped)" },
+  { id: 14, src: "/gallery/gallery-14.jpg", aspect: "aspect-[16/9]", type: "landscape", alt: "Dr. Hetal Chheda at her desk next to the computer showing the clinic founding date (2011)" },
+  { id: 15, src: "/gallery/gallery-15.jpg", aspect: "aspect-[16/9]", type: "landscape", alt: "Team group photo of Dr. Hetal Chheda, associate dentist, and assistants by the testimonial wall" },
 ];
 
 export default function Gallery() {
@@ -80,10 +80,15 @@ export default function Gallery() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [activeImageIndex, closeLightbox, handleNext, handlePrev]);
 
-  // Split images into 3 columns dynamically to balance height and prevent layout gaps
-  const col1 = galleryImages.filter((_, idx) => idx % 3 === 0);
-  const col2 = galleryImages.filter((_, idx) => idx % 3 === 1);
-  const col3 = galleryImages.filter((_, idx) => idx % 3 === 2);
+  // Manually distribute images across 3 columns so portrait images are spread evenly (one per column)
+  // Portraits are ids: 6 (col3), 12 (col1), 13 (col2)
+  const col1Ids = [1, 4, 7, 10, 12, 15]; // portrait: 12
+  const col2Ids = [2, 5, 8, 11, 13];     // portrait: 13
+  const col3Ids = [3, 6, 9, 14];          // portrait: 6
+
+  const col1 = galleryImages.filter((img) => col1Ids.includes(img.id));
+  const col2 = galleryImages.filter((img) => col2Ids.includes(img.id));
+  const col3 = galleryImages.filter((img) => col3Ids.includes(img.id));
 
   const GalleryCard = ({ img, index }: { img: GalleryImage; index: number }) => (
     <motion.div
@@ -100,7 +105,7 @@ export default function Gallery() {
           alt={img.alt}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-750 group-hover:scale-105"
+          className={`object-cover transition-transform duration-750 group-hover:scale-105 ${img.type === "portrait" ? "object-top" : "object-center"}`}
           loading="lazy"
         />
         <div className="absolute inset-0 bg-slate-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -130,27 +135,27 @@ export default function Gallery() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
         {/* Column 1 */}
         <div className="flex flex-col gap-6">
-          {col1.map((img, idx) => (
-            <GalleryCard key={img.id} img={img} index={idx * 3} />
+          {col1.map((img) => (
+            <GalleryCard key={img.id} img={img} index={galleryImages.findIndex(g => g.id === img.id)} />
           ))}
         </div>
         {/* Column 2 */}
         <div className="flex flex-col gap-6">
-          {col2.map((img, idx) => (
-            <GalleryCard key={img.id} img={img} index={idx * 3 + 1} />
+          {col2.map((img) => (
+            <GalleryCard key={img.id} img={img} index={galleryImages.findIndex(g => g.id === img.id)} />
           ))}
         </div>
         {/* Column 3 (will merge with col2 on sm, or stack columns appropriately) */}
         <div className="flex flex-col gap-6 sm:hidden lg:flex">
-          {col3.map((img, idx) => (
-            <GalleryCard key={img.id} img={img} index={idx * 3 + 2} />
+          {col3.map((img) => (
+            <GalleryCard key={img.id} img={img} index={galleryImages.findIndex(g => g.id === img.id)} />
           ))}
         </div>
         
-        {/* Column 3 for sm screen viewports (rendered as sibling grid layout items to avoid empty tablet column spaces) */}
+        {/* Column 3 for sm screen viewports */}
         <div className="hidden sm:flex lg:hidden flex-col gap-6">
-          {col3.map((img, idx) => (
-            <GalleryCard key={img.id} img={img} index={idx * 3 + 2} />
+          {col3.map((img) => (
+            <GalleryCard key={img.id} img={img} index={galleryImages.findIndex(g => g.id === img.id)} />
           ))}
         </div>
       </div>
