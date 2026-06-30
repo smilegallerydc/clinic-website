@@ -60,6 +60,16 @@ const LinkedInIcon = () => (
   </svg>
 );
 
+const FacebookIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
+    <rect width="24" height="24" rx="5" fill="#1877F2" />
+    <path
+      d="M18 12h-3v8h-3v-8H9V9h3V7c0-2 1-3 3-3h3v3h-2c-.5 0-1 .5-1 1v1h3l-.5 3z"
+      fill="white"
+    />
+  </svg>
+);
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -77,6 +87,13 @@ export default function Footer() {
       href: "https://wa.me/message/MIPWG2AVM2GWC1",
       icon: <WhatsAppIcon />,
       hoverBg: "hover:bg-[#25D366]",
+    },
+    {
+      key: "facebook",
+      label: "Follow us on Facebook",
+      href: "https://www.facebook.com/share/1ETCRfJFUe/?mibextid=wwXIfr",
+      icon: <FacebookIcon />,
+      hoverBg: "hover:bg-[#1877F2]",
     },
     {
       key: "linkedin",
