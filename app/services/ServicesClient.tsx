@@ -207,9 +207,14 @@ export default function Services() {
 
       {/* 2. Category Highlights Icons Grid */}
       <section className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {["General", "Orthodontics", "Cosmetic", "Restorative"].map((category, index) => (
+        {[
+          { title: "Dental Implants", subtitle: "Implantology Unit", desc: "Specialized implant care" },
+          { title: "Invisalign® Aligners", subtitle: "Orthodontic Unit", desc: "3D digital scanning" },
+          { title: "Cosmetic Dentistry", subtitle: "Cosmetic Unit", desc: "Veneers & smile design" },
+          { title: "General Dentistry", subtitle: "Painless Clinic Unit", desc: "Laser RCT & checkups" }
+        ].map((item, index) => (
           <motion.div
-            key={category}
+            key={item.title}
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -218,10 +223,10 @@ export default function Services() {
             className="bg-slate-50 border border-slate-100 rounded-2xl p-6 text-center shadow-sm hover:shadow-md hover:border-primary/20 transition-[box-shadow,border-color] duration-300"
           >
             <span className="inline-block px-3 py-1 bg-white rounded-full text-slate-500 border border-slate-100 text-xs font-semibold uppercase tracking-wider mb-3">
-              Treatment Unit
+              {item.subtitle}
             </span>
-            <h3 className="font-display font-bold text-slate-800 text-base">{category}</h3>
-            <p className="text-slate-400 text-xs mt-1">Specialized clinical rooms</p>
+            <h3 className="font-display font-bold text-slate-800 text-base">{item.title}</h3>
+            <p className="text-slate-400 text-xs mt-1">{item.desc}</p>
           </motion.div>
         ))}
       </section>

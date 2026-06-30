@@ -50,6 +50,16 @@ const YouTubeIcon = () => (
   </svg>
 );
 
+const LinkedInIcon = () => (
+  <svg viewBox="0 0 24 24" className="w-5 h-5" aria-hidden="true">
+    <rect width="24" height="24" rx="5" fill="#0077B5" />
+    <path
+      d="M19 19h-3v-4.5c0-1.1-.9-2-2-2s-2 .9-2 2V19h-3v-8h3v1.2c.5-.8 1.5-1.2 2.5-1.2 2 0 4.5 1.5 4.5 4.5V19zM6.5 8.5C5.7 8.5 5 7.8 5 7s.7-1.5 1.5-1.5S8 6.2 8 7s-.7 1.5-1.5 1.5zM8 19H5v-8h3v8z"
+      fill="white"
+    />
+  </svg>
+);
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -67,6 +77,13 @@ export default function Footer() {
       href: "https://wa.me/message/MIPWG2AVM2GWC1",
       icon: <WhatsAppIcon />,
       hoverBg: "hover:bg-[#25D366]",
+    },
+    {
+      key: "linkedin",
+      label: "Dr. Hetal Chheda on LinkedIn",
+      href: "https://www.linkedin.com/in/dr-hetal-chheda-shah-aaba2a20?utm_source=share_via&utm_content=profile&utm_medium=member_android",
+      icon: <LinkedInIcon />,
+      hoverBg: "hover:bg-[#0077B5]",
     },
     {
       key: "youtube",
@@ -233,11 +250,10 @@ export default function Footer() {
                 <span>Ground Floor, Flat No. 1, Arvind Apartment, L.T. Road, Opp. P.N.G. Jewellers, Next to Swiss Paradise, Borivali West, Mumbai – 400092</span>
               </p>
               {/* Interactive Map — clicking opens Google Maps app */}
-              {/* Interactive Map — clicking opens Google Maps app */}
               <div className="w-full h-52 rounded-xl overflow-hidden relative border border-slate-700 bg-slate-800 group cursor-pointer">
                 {/* Entire map container acts as link on mobile/desktop, disabling map pointer events to avoid scroll locks */}
                 <a
-                  href="https://goo.gl/maps/nDTsnEUyR1D2"
+                  href="https://www.google.com/maps/dir/?api=1&destination=19.228360041534398,72.85270486307037"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="absolute inset-0 z-10"
@@ -248,7 +264,7 @@ export default function Footer() {
                 
                 <iframe
                   title="Smile Gallery Dental Clinic Map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.8812678680795!2d72.85244517610014!3d19.231050787002012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b12f6c91a0ef%3A0xe54d241d720c242c!2sSmile%20Gallery%20Dental%20Clinic!5e0!3m2!1sen!2sin!4v1719310000000!5m2!1sen!2sin"
+                  src="https://maps.google.com/maps?q=19.228360041534398,72.85270486307037&z=17&output=embed"
                   width="100%"
                   height="100%"
                   className="border-0 opacity-80 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"

@@ -183,7 +183,7 @@ export default function Contact() {
               <h3 className="font-display font-bold text-slate-800 text-lg">Clinic Address</h3>
               {/* Map App navigation button */}
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=Smile+Gallery+Dental+Clinic+Borivali+West+Mumbai"
+                href="https://www.google.com/maps/dir/?api=1&destination=19.228360041534398,72.85270486307037"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-3.5 py-2 rounded-xl bg-primary hover:bg-primary-hover text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition-all cursor-pointer"
@@ -203,7 +203,7 @@ export default function Contact() {
             <div className="w-full h-56 rounded-2xl overflow-hidden border border-slate-200 bg-slate-100 shadow-inner relative group cursor-pointer">
               {/* Entire map container acts as link on mobile/desktop, disabling map pointer events to avoid scroll locks */}
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=Smile+Gallery+Dental+Clinic+Borivali+West+Mumbai"
+                href="https://www.google.com/maps/dir/?api=1&destination=19.228360041534398,72.85270486307037"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="absolute inset-0 z-10"
@@ -213,7 +213,7 @@ export default function Contact() {
               
               <iframe
                 title="Smile Gallery Dental Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.8812678680795!2d72.85244517610014!3d19.231050787002012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b12f6c91a0ef%3A0xe54d241d720c242c!2sSmile+Gallery+Dental+Clinic!5e0!3m2!1sen!2sin!4v1719310000000!5m2!1sen!2sin"
+                src="https://maps.google.com/maps?q=19.228360041534398,72.85270486307037&z=17&output=embed"
                 width="100%"
                 height="100%"
                 className="border-0 pointer-events-none group-hover:opacity-100 opacity-90 transition-opacity duration-300"
