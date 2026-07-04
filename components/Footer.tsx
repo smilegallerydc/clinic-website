@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { Star, ArrowRight } from "lucide-react";
 
 // Brand-accurate social media SVG icons
 const InstagramIcon = () => (
@@ -115,29 +117,75 @@ export default function Footer() {
     <footer className="bg-slate-900 text-slate-300 font-sans border-t border-slate-800">
       {/* Dynamic CTA Banner Block */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -translate-y-12">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-primary to-accent p-8 md:p-12 shadow-xl shadow-primary/20 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="absolute top-0 right-0 -translate-y-12 translate-x-12 w-64 h-64 rounded-full bg-white/5 blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 left-0 translate-y-12 -translate-x-12 w-64 h-64 rounded-full bg-white/5 blur-3xl pointer-events-none" />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          whileHover={{ y: -16, transition: { duration: 0.3 } }}
+          className="relative overflow-hidden rounded-[2rem] bg-slate-900 border border-slate-800/80 p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.35)] flex flex-col md:flex-row items-center justify-between gap-6"
+        >
+          {/* Extremely subtle pink/purple ambient background glows */}
+          <div className="absolute -left-12 -top-12 w-48 h-48 rounded-full bg-primary/5 blur-[80px] pointer-events-none" />
+          <div className="absolute right-12 bottom-0 w-64 h-64 rounded-full bg-accent/5 blur-[100px] pointer-events-none" />
+          
+          {/* Subtle top indicator accent line */}
+          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-primary/30 to-transparent pointer-events-none" />
 
-          <div className="relative z-10 text-center md:text-left max-w-xl">
-            <h3 className="font-display font-bold text-2xl md:text-3xl text-white mb-2 leading-tight">
-              Loved Your Experience With Us?
-            </h3>
-            <p className="text-white/80 text-sm md:text-base font-medium">
-              Your feedback means a lot to us and helps others in Mumbai choose the right care. Take a moment to leave us a Google review!
-            </p>
+          <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left max-w-xl space-y-3">
+            {/* Animated rating stars */}
+            <div className="flex items-center gap-1">
+              {[...Array(5)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.5, rotate: -15 }}
+                  whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.4,
+                    delay: i * 0.1,
+                    type: "spring",
+                    stiffness: 150
+                  }}
+                  whileHover={{ scale: 1.25, rotate: 15 }}
+                  className="cursor-default"
+                >
+                  <Star className="w-4 h-4 fill-amber-400 text-amber-400 drop-shadow-[0_2px_4px_rgba(245,158,11,0.2)]" />
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="space-y-1">
+              <h3 className="font-display font-bold text-xl md:text-2xl text-white tracking-tight leading-tight">
+                Loved Your Experience With Us?
+              </h3>
+              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-lg font-medium">
+                Your feedback means a lot to us and helps others in Mumbai choose the right care. Take a moment to leave us a Google review!
+              </p>
+            </div>
           </div>
+
           <div className="relative z-10 shrink-0">
-            <a
+            <motion.a
               href="https://g.page/r/CTDlFtXtThK6EBM/review"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-white text-primary hover:bg-slate-50 font-semibold text-sm transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-white hover:bg-primary text-slate-900 hover:text-white font-semibold text-sm transition-all duration-300 shadow-md hover:shadow-lg hover:shadow-primary/10 group overflow-hidden"
             >
-              Review Us on Google
-            </a>
+              {/* Custom Google G-Logo SVG */}
+              <svg className="w-4 h-4 shrink-0 bg-white p-0.5 rounded-full" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              <span>Review Us on Google</span>
+              <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-white group-hover:translate-x-0.5 transition-all duration-300" />
+            </motion.a>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Main Footer Content */}
