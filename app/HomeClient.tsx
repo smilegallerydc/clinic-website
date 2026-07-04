@@ -269,7 +269,7 @@ export default function Home() {
 
                         {/* Right Column: Layered Editorial Collage — hidden on mobile to keep hero clean */}
                         <div className="hidden sm:flex lg:col-span-6 relative justify-center lg:justify-end">
-                            <div className="relative w-full max-w-[340px] xl:max-w-[380px] aspect-[4/5] flex items-center justify-center">
+                            <div className="relative w-full max-w-[420px] lg:max-w-[440px] xl:max-w-[480px] aspect-[4/5] flex items-center justify-center">
                                 {/* Background accent soft shape */}
                                 <div className="absolute top-[10%] left-[5%] w-[85%] h-[80%] rounded-[3rem] bg-gradient-to-tr from-primary-light to-teal-50 -z-10 rotate-3" />
 
