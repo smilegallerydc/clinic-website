@@ -94,3 +94,57 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #d92662;
 }
+
+/* USP Pills Animations */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes borderGlowTeal {
+  0%, 100% { border-color: rgba(20, 184, 166, 0.18); box-shadow: 0 2px 4px rgba(20, 184, 166, 0.03); }
+  50% { border-color: rgba(20, 184, 166, 0.45); box-shadow: 0 2px 10px rgba(20, 184, 166, 0.12); }
+}
+
+@keyframes borderGlowBlue {
+  0%, 100% { border-color: rgba(59, 130, 246, 0.18); box-shadow: 0 2px 4px rgba(59, 130, 246, 0.03); }
+  50% { border-color: rgba(59, 130, 246, 0.45); box-shadow: 0 2px 10px rgba(59, 130, 246, 0.12); }
+}
+
+@keyframes borderGlowPink {
+  0%, 100% { border-color: rgba(217, 38, 98, 0.18); box-shadow: 0 2px 4px rgba(217, 38, 98, 0.03); }
+  50% { border-color: rgba(217, 38, 98, 0.45); box-shadow: 0 2px 10px rgba(217, 38, 98, 0.12); }
+}
+
+@keyframes borderGlowPurple {
+  0%, 100% { border-color: rgba(157, 38, 141, 0.18); box-shadow: 0 2px 4px rgba(157, 38, 141, 0.03); }
+  50% { border-color: rgba(157, 38, 141, 0.45); box-shadow: 0 2px 10px rgba(157, 38, 141, 0.12); }
+}
+
+.pill-shimmer-teal {
+  background: linear-gradient(90deg, rgba(204,251,241,0.3) 0%, rgba(204,251,241,0.75) 50%, rgba(204,251,241,0.3) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 4s infinite linear, borderGlowTeal 3s infinite ease-in-out;
+}
+
+.pill-shimmer-blue {
+  background: linear-gradient(90deg, rgba(219,234,254,0.3) 0%, rgba(219,234,254,0.75) 50%, rgba(219,234,254,0.3) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 4s infinite linear, borderGlowBlue 3s infinite ease-in-out;
+}
+
+.pill-shimmer-pink {
+  background: linear-gradient(90deg, rgba(253,242,247,0.3) 0%, rgba(253,242,247,0.75) 50%, rgba(253,242,247,0.3) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 4s infinite linear, borderGlowPink 3s infinite ease-in-out;
+}
+
+.pill-shimmer-purple {
+  background: linear-gradient(90deg, rgba(245,238,248,0.3) 0%, rgba(245,238,248,0.75) 50%, rgba(245,238,248,0.3) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 4s infinite linear, borderGlowPurple 3s infinite ease-in-out;
+}

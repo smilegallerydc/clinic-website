@@ -310,7 +310,7 @@ export default function Footer() {
 
                 {/* Soft overlay stating tap instruction */}
                 <div className="absolute bottom-2 right-2 bg-white/95 backdrop-blur-sm text-slate-800 text-[10px] font-semibold py-1.5 px-3 rounded-xl shadow-md border border-slate-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 font-sans">
-                  Tap to open in Map App 🗺️
+                  Tap to open in Map App
                 </div>
               </div>
             </div>

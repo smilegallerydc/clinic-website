@@ -2,6 +2,8 @@
 
 import Accordion from "@/components/Accordion";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { Stethoscope, AlignVerticalDistributeCenter, Smile, Activity, ScanSearch } from "lucide-react";
 
 interface TreatmentItem {
   id: string;
@@ -208,10 +210,34 @@ export default function Services() {
       {/* 2. Category Highlights Icons Grid */}
       <section className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {[
-          { title: "Dental Implants", subtitle: "Implantology Unit", desc: "Specialized implant care" },
-          { title: "Invisalign® Aligners", subtitle: "Orthodontic Unit", desc: "3D digital scanning" },
-          { title: "Cosmetic Dentistry", subtitle: "Cosmetic Unit", desc: "Veneers & smile design" },
-          { title: "General Dentistry", subtitle: "Painless Clinic Unit", desc: "Laser RCT & checkups" }
+          { 
+            title: "Dental Implants", 
+            subtitle: "Implantology Unit", 
+            desc: "Specialized implant care",
+            color: "bg-primary-light text-primary border-primary/10",
+            icon: <Stethoscope className="w-5 h-5" />
+          },
+          { 
+            title: "Invisalign® Aligners", 
+            subtitle: "Orthodontic Unit", 
+            desc: "3D digital scanning",
+            color: "bg-blue-50 text-[#0F6FBA] border-blue-100/60",
+            icon: <AlignVerticalDistributeCenter className="w-5 h-5" />
+          },
+          { 
+            title: "Cosmetic Dentistry", 
+            subtitle: "Cosmetic Unit", 
+            desc: "Veneers & smile design",
+            color: "bg-accent-light text-accent border-accent-light/60",
+            icon: <Smile className="w-5 h-5" />
+          },
+          { 
+            title: "General Dentistry", 
+            subtitle: "Painless Clinic Unit", 
+            desc: "Laser RCT & checkups",
+            color: "bg-teal-50 text-teal-700 border-teal-100/60",
+            icon: <ScanSearch className="w-5 h-5" />
+          }
         ].map((item, index) => (
           <motion.div
             key={item.title}
@@ -219,14 +245,21 @@ export default function Services() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.45, delay: index * 0.1, ease: "easeOut" }}
-            whileHover={{ y: -4 }}
-            className="bg-slate-50 border border-slate-100 rounded-2xl p-6 text-center shadow-sm hover:shadow-md hover:border-primary/20 transition-[box-shadow,border-color] duration-300"
+            whileHover={{ y: -6 }}
+            className="bg-white border border-slate-100 rounded-3xl p-6 text-center shadow-lg shadow-slate-100/50 hover:shadow-xl hover:border-primary/20 transition-all duration-300 group flex flex-col items-center justify-between min-h-[220px]"
           >
-            <span className="inline-block px-3 py-1 bg-white rounded-full text-slate-500 border border-slate-100 text-xs font-semibold uppercase tracking-wider mb-3">
-              {item.subtitle}
-            </span>
-            <h3 className="font-display font-bold text-slate-800 text-base">{item.title}</h3>
-            <p className="text-slate-400 text-xs mt-1">{item.desc}</p>
+            <div className="space-y-4 flex flex-col items-center">
+              <div className={`w-10 h-10 rounded-xl ${item.color} border flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-sm`}>
+                {item.icon}
+              </div>
+              <div>
+                <span className="inline-block px-2.5 py-0.5 rounded-full bg-slate-50 text-slate-500 border border-slate-100 text-[9px] font-bold uppercase tracking-wider mb-2">
+                  {item.subtitle}
+                </span>
+                <h3 className="font-display font-extrabold text-slate-900 text-base group-hover:text-primary transition-colors duration-300">{item.title}</h3>
+              </div>
+            </div>
+            <p className="text-slate-400 text-xs mt-2 font-medium font-sans">{item.desc}</p>
           </motion.div>
         ))}
       </section>
@@ -249,11 +282,25 @@ export default function Services() {
               <Accordion title={`${item.name} (${item.category})`}>
                 <div className="space-y-4">
                   <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="font-bold text-xs uppercase text-slate-400">Duration:</span>
-                      <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-semibold font-sans">
-                        {item.duration}
-                      </span>
+                    <div className="flex flex-wrap items-center justify-between gap-3 mb-2">
+                      <div className="flex items-center gap-2">
+                        <span className="font-bold text-xs uppercase text-slate-400">Duration:</span>
+                        <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-xs font-semibold font-sans">
+                          {item.duration}
+                        </span>
+                      </div>
+                      {item.id === "invisalign" && (
+                        <div className="flex items-center gap-2 px-2 py-1 bg-white border border-slate-100 rounded-lg shadow-sm">
+                          <Image
+                            src="/invisalign-logo.webp"
+                            alt="Invisalign Certified Provider"
+                            width={52}
+                            height={23}
+                            className="object-contain"
+                          />
+                          <span className="text-[8px] font-bold text-[#0F6FBA] border-l border-slate-200 pl-1.5 leading-none">Certified Provider</span>
+                        </div>
+                      )}
                     </div>
                     <p className="text-slate-600 leading-relaxed font-sans">{item.expectText}</p>
                   </div>

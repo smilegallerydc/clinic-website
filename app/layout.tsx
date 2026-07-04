@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Smile Gallery Dental Clinic Borivali",
   },
   description: "Experience premium, modern dental care at Smile Gallery Dental Clinic, Borivali West. Led by Dr. Hetal Chheda (BDS, PGDAOI Implant – France), we specialize in cosmetic smile design, dental implants, and painless laser dentistry.",
-  keywords: ["dental clinic Borivali", "dentist Borivali West", "Dr Hetal Chheda dentist", "Smile Gallery Dental Clinic", "cosmetic dentistry Mumbai", "dental implants Borivali West", "laser dentistry Mumbai", "root canal Borivali", "teeth whitening Borivali", "orthodontics Borivali", "Invisalign Mumbai"],
+  keywords: ["dental clinic Borivali", "best dentist Borivali West", "dentist Borivali West", "Dr Hetal Chheda dentist", "Smile Gallery Dental Clinic", "cosmetic dentistry Mumbai", "dental implants Borivali West", "implant dentist Borivali", "implant specialist Mumbai", "full mouth implant treatment", "missing tooth implants Borivali", "laser dentistry Mumbai", "painless dentistry Borivali", "painless laser procedures", "root canal Borivali", "root canal specialist Mumbai", "in house OPG Borivali", "dental scanner Borivali", "3D dental scanner Mumbai", "pediatric dentistry Borivali", "geriatric dentistry Mumbai", "Invisalign Mumbai", "Invisalign Borivali West", "clear aligners Borivali", "teeth whitening Borivali", "smile designing Mumbai", "western suburbs dentist Mumbai", "painless artistry dentistry"],
   robots: {
     index: true,
     follow: true,
