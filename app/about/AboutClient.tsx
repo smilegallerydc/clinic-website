@@ -27,18 +27,18 @@ export default function About() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-20 font-sans overflow-hidden">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-12 sm:space-y-20 font-sans overflow-hidden">
       {/* 1. Page Header */}
       <motion.section
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, ease: "easeOut" }}
-        className="text-center max-w-3xl mx-auto space-y-4 pt-6"
+        className="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4 pt-4 sm:pt-6"
       >
-        <h1 className="font-display font-bold text-4xl sm:text-5xl text-slate-900 leading-tight">
+        <h1 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-slate-900 leading-tight">
           Dedicated to Excellence in Modern Dentistry
         </h1>
-        <p className="text-slate-600 text-lg leading-relaxed max-w-2xl mx-auto">
+        <p className="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
           We combine advanced digital diagnostic equipment with a calming, empathetic environment to make your dental care journey pleasant and effective.
         </p>
       </motion.section>

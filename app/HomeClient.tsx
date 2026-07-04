@@ -29,35 +29,35 @@ export default function Home() {
     };
 
     return (
-        <div className="space-y-20 pb-12">
+        <div className="space-y-12 sm:space-y-20 pb-12">
             {/* 1. Hero Section */}
-            <section className="relative min-h-[80vh] lg:h-[calc(100vh-80px)] lg:min-h-0 flex items-center bg-white overflow-hidden font-sans py-2 lg:py-0">
+            <section className="relative flex items-center bg-white overflow-hidden font-sans pt-8 pb-10 sm:pt-6 sm:pb-12 lg:min-h-[calc(100vh-80px)] lg:pt-0 lg:pb-0">
                 {/* Modern grid background and soft gradients */}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(15,118,110,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(15,118,110,0.025)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10" />
                 <div className="absolute top-0 right-1/4 w-[600px] h-[600px] rounded-full bg-primary-light/50 blur-3xl -z-20 animate-[pulse_10s_infinite_alternate]" />
                 <div className="absolute bottom-10 left-10 w-[400px] h-[400px] rounded-full bg-teal-50/70 blur-3xl -z-20" />
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-4 lg:py-0">
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
                         {/* Left Column: Content */}
                         <motion.div
                             variants={heroContainer}
                             initial="hidden"
                             animate="visible"
-                            className="lg:col-span-6 space-y-3 lg:space-y-2.5 text-slate-800"
+                            className="lg:col-span-6 space-y-4 lg:space-y-3 text-slate-800"
                         >
                             {/* Heading */}
                             <motion.div variants={heroItem}>
-                                <h1 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-tight text-slate-900">
+                                <h1 className="font-display font-extrabold text-[1.75rem] sm:text-4xl lg:text-[2.75rem] leading-[1.15] sm:leading-[1.1] tracking-tight text-slate-900">
                                     <span className="text-gradient">Smile Gallery</span>{' '}
-                                    Dental Clinic{' '}&amp;{' '}Implant Center.
+                                    Dental Clinic &amp; Implant Center.
                                 </h1>
                             </motion.div>
 
                             {/* Paragraph */}
                             <motion.p
                                 variants={heroItem}
-                                className="text-slate-600 text-base sm:text-lg max-w-xl leading-relaxed font-normal"
+                                className="text-slate-600 text-sm sm:text-base lg:text-lg max-w-xl leading-relaxed font-normal"
                             >
                                 Led by{' '}
                                 <strong className="text-slate-800 font-semibold">Dr. Hetal Chheda</strong>,
@@ -67,7 +67,7 @@ export default function Home() {
                             {/* USP Badges */}
                             <motion.div
                                 variants={heroItem}
-                                className="flex flex-row flex-nowrap overflow-x-auto lg:overflow-x-visible items-center gap-2 pt-1 pb-1 scrollbar-none w-full whitespace-nowrap"
+                                className="grid grid-cols-2 sm:flex sm:flex-row sm:flex-wrap gap-2 pt-1"
                             >
                                 {[
                                     { label: "In-House OPG",      icon: <ScanSearch className="w-3.5 h-3.5 shrink-0" />, color: "pill-shimmer-teal text-teal-800 border-teal-100" },
@@ -81,7 +81,7 @@ export default function Home() {
                                         animate={{ opacity: 1, scale: 1, y: 0 }}
                                         transition={{ duration: 0.35, delay: 0.15 + idx * 0.08, ease: "easeOut" }}
                                         whileHover={{ scale: 1.04, y: -2 }}
-                                        className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border text-xs font-semibold font-sans cursor-default transition-all duration-200 ${badge.color}`}
+                                        className={`inline-flex items-center justify-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full border text-xs font-semibold font-sans cursor-default transition-all duration-200 ${badge.color}`}
                                     >
                                         {badge.icon}
                                         {badge.label}
@@ -238,38 +238,38 @@ export default function Home() {
                             {/* Stats */}
                             <motion.div
                                 variants={heroItem}
-                                className="grid grid-cols-3 gap-6 pt-3 border-t border-slate-100 max-w-md text-left"
+                                className="grid grid-cols-3 gap-3 sm:gap-6 pt-3 border-t border-slate-100 max-w-md text-left"
                             >
                                 <div>
-                                    <h4 className="font-display font-black text-2xl sm:text-3xl text-slate-900">
+                                    <h4 className="font-display font-black text-xl sm:text-3xl text-slate-900">
                                         15k+
                                     </h4>
-                                    <p className="text-slate-500 text-xs mt-1">
+                                    <p className="text-slate-500 text-[10px] sm:text-xs mt-1">
                                         Happy Smiles
                                     </p>
                                 </div>
                                 <div>
-                                    <h4 className="font-display font-black text-2xl sm:text-3xl text-slate-900">
+                                    <h4 className="font-display font-black text-xl sm:text-3xl text-slate-900">
                                         15+
                                     </h4>
-                                    <p className="text-slate-500 text-xs mt-1">
+                                    <p className="text-slate-500 text-[10px] sm:text-xs mt-1">
                                         Years Practice
                                     </p>
                                 </div>
                                 <div>
-                                    <h4 className="font-display font-black text-2xl sm:text-3xl text-slate-900">
+                                    <h4 className="font-display font-black text-xl sm:text-3xl text-slate-900">
                                         100%
                                     </h4>
-                                    <p className="text-slate-500 text-xs mt-1">
+                                    <p className="text-slate-500 text-[10px] sm:text-xs mt-1">
                                         Satisfaction
                                     </p>
                                 </div>
                             </motion.div>
                         </motion.div>
 
-                        {/* Right Column: Layered Editorial Collage */}
-                        <div className="lg:col-span-6 relative flex justify-center lg:justify-end">
-                            <div className="relative w-full max-w-[360px] lg:max-w-[340px] xl:max-w-[360px] aspect-[4/5] sm:aspect-square md:aspect-[4/5] flex items-center justify-center">
+                        {/* Right Column: Layered Editorial Collage — hidden on mobile to keep hero clean */}
+                        <div className="hidden sm:flex lg:col-span-6 relative justify-center lg:justify-end">
+                            <div className="relative w-full max-w-[340px] xl:max-w-[380px] aspect-[4/5] flex items-center justify-center">
                                 {/* Background accent soft shape */}
                                 <div className="absolute top-[10%] left-[5%] w-[85%] h-[80%] rounded-[3rem] bg-gradient-to-tr from-primary-light to-teal-50 -z-10 rotate-3" />
 
@@ -469,7 +469,7 @@ export default function Home() {
             </section>
 
             {/* 3. Core Services Highlights */}
-            <section className="bg-slate-50 py-16 border-y border-slate-100 font-sans">
+            <section className="bg-slate-50 py-10 sm:py-16 border-y border-slate-100 font-sans">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
                     {/* Header */}
                     <div className="text-center max-w-xl mx-auto space-y-3">
@@ -486,7 +486,7 @@ export default function Home() {
                     </div>
 
                     {/* Cards Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                         {/* Dental Implants & FMR */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
