@@ -49,9 +49,8 @@ export default function Home() {
                             {/* Heading */}
                             <motion.div variants={heroItem}>
                                 <h1 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-[2.75rem] leading-[1.1] tracking-tight text-slate-900">
-                                    Welcome to{' '}
                                     <span className="text-gradient">Smile Gallery</span>{' '}
-                                    Dental Clinic.
+                                    Dental Clinic{' '}&amp;{' '}Implant Center.
                                 </h1>
                             </motion.div>
 
@@ -648,6 +647,16 @@ export default function Home() {
                                     <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full uppercase tracking-wider">
                                         Diagnostics
                                     </span>
+                                </div>
+                                {/* Real scanner photo */}
+                                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-slate-100 -mx-0">
+                                    <Image
+                                        src="/dental-scanner.jpg"
+                                        alt="Shining 3D intraoral dental scanner in use at Smile Gallery"
+                                        fill
+                                        className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                                        sizes="(max-width: 1024px) 100vw, 300px"
+                                    />
                                 </div>
                                 <div className="space-y-1">
                                     <h3 className="font-display font-extrabold text-lg text-slate-900 group-hover:text-emerald-600 transition-colors">

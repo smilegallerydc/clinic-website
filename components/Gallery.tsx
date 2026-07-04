@@ -25,7 +25,7 @@ const galleryImages: GalleryImage[] = [
   { id: 10, src: "/gallery/gallery-10.jpg", aspect: "aspect-[16/9]", type: "landscape", alt: "Street-view entrance signs and direction banners for the Borivali West clinic" },
   { id: 11, src: "/gallery/gallery-11.jpg", aspect: "aspect-[16/9]", type: "landscape", alt: "Reception desk showing PhonePe QR code payment stand and jaw models" },
   { id: 12, src: "/gallery/gallery-12.jpg", aspect: "aspect-[3/4]", type: "portrait", alt: "Dr. Hetal Chheda in clinical coat standing by the reception counter" },
-  { id: 13, src: "/gallery/gallery-13.jpg", aspect: "aspect-[3/4]", type: "portrait", alt: "Dr. Hetal Chheda sitting at her desk in front of branding (hands clasped)" },
+  { id: 13, src: "/dental-scanner.jpg", aspect: "aspect-[3/4]", type: "portrait", alt: "Shining 3D intraoral dental scanner capturing a 3D model of patient teeth at Smile Gallery" },
   { id: 14, src: "/gallery/gallery-14.jpg", aspect: "aspect-[16/9]", type: "landscape", alt: "Dr. Hetal Chheda at her desk next to the computer showing the clinic founding date (2011)" },
   { id: 15, src: "/gallery/gallery-15.jpg", aspect: "aspect-[16/9]", type: "landscape", alt: "Team group photo of Dr. Hetal Chheda, associate dentist, and assistants by the testimonial wall" },
 ];
