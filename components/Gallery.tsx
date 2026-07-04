@@ -28,7 +28,6 @@ const galleryImages: GalleryImage[] = [
   { id: 13, src: "/dental-scanner.jpg", aspect: "aspect-[3/4]", type: "portrait", alt: "Shining 3D intraoral dental scanner capturing a 3D model of patient teeth at Smile Gallery" },
   { id: 14, src: "/gallery/gallery-14.jpg", aspect: "aspect-[16/9]", type: "landscape", alt: "Dr. Hetal Chheda at her desk next to the computer showing the clinic founding date (2011)" },
   { id: 15, src: "/gallery/gallery-15.jpg", aspect: "aspect-[16/9]", type: "landscape", alt: "Team group photo of Dr. Hetal Chheda, associate dentist, and assistants by the testimonial wall" },
-  { id: 16, src: "/gallery/gallery-16.jpg", aspect: "aspect-[4/3]", type: "landscape", alt: "Modern teal dental operatory chair with overhead surgical light and diagnostic equipment" },
   { id: 17, src: "/gallery/gallery-17.jpg", aspect: "aspect-[4/3]", type: "landscape", alt: "Pink dental operatory chair with digital monitor and surgical light in a bright clinical room" },
   { id: 18, src: "/gallery/gallery-18.jpg", aspect: "aspect-[4/3]", type: "landscape", alt: "Consultation desk with patient seating at Smile Gallery Dental Clinic" },
 ];
@@ -85,7 +84,7 @@ export default function Gallery() {
 
   // Manually distribute images across 3 columns so portrait images are spread evenly (one per column)
   // Portraits are ids: 6 (col3), 12 (col1), 13 (col2)
-  const col1Ids = [1, 4, 7, 10, 12, 16];   // portrait: 12  | new: teal operatory
+  const col1Ids = [1, 4, 7, 10, 12];   // portrait: 12
   const col2Ids = [2, 5, 8, 11, 13, 17];   // portrait: 13  | new: pink operatory
   const col3Ids = [3, 6, 9, 14, 15, 18];   // portrait: 6   | new: consultation desk
 
