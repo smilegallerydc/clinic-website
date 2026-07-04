@@ -123,14 +123,14 @@ export default function Footer() {
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, ease: "easeOut" }}
           whileHover={{ y: -16, transition: { duration: 0.3 } }}
-          className="relative overflow-hidden rounded-[2rem] bg-slate-900 border border-slate-800/80 p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.35)] flex flex-col md:flex-row items-center justify-between gap-6"
+          className="relative overflow-hidden rounded-[2rem] bg-[#d92662] p-8 md:p-10 shadow-[0_20px_50px_rgba(217,38,98,0.15)] flex flex-col md:flex-row items-center justify-between gap-6"
         >
-          {/* Extremely subtle pink/purple ambient background glows */}
-          <div className="absolute -left-12 -top-12 w-48 h-48 rounded-full bg-primary/5 blur-[80px] pointer-events-none" />
-          <div className="absolute right-12 bottom-0 w-64 h-64 rounded-full bg-accent/5 blur-[100px] pointer-events-none" />
+          {/* Subtle light ambient background glows */}
+          <div className="absolute -left-12 -top-12 w-48 h-48 rounded-full bg-white/10 blur-[80px] pointer-events-none" />
+          <div className="absolute right-12 bottom-0 w-64 h-64 rounded-full bg-white/10 blur-[100px] pointer-events-none" />
           
           {/* Subtle top indicator accent line */}
-          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-primary/30 to-transparent pointer-events-none" />
+          <div className="absolute top-0 left-0 right-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
 
           <div className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left max-w-xl space-y-3">
             {/* Animated rating stars */}
@@ -159,7 +159,7 @@ export default function Footer() {
               <h3 className="font-display font-bold text-xl md:text-2xl text-white tracking-tight leading-tight">
                 Loved Your Experience With Us?
               </h3>
-              <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-lg font-medium">
+              <p className="text-pink-50 text-xs sm:text-sm leading-relaxed max-w-lg font-medium">
                 Your feedback means a lot to us and helps others in Mumbai choose the right care. Take a moment to leave us a Google review!
               </p>
             </div>
