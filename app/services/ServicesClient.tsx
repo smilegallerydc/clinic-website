@@ -290,15 +290,15 @@ export default function Services() {
                         </span>
                       </div>
                       {item.id === "invisalign" && (
-                        <div className="flex items-center gap-2 px-2 py-1 bg-white border border-slate-100 rounded-lg shadow-sm">
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-50 border border-blue-100 rounded-full">
                           <Image
-                            src="/invisalign-logo.webp"
-                            alt="Invisalign Certified Provider"
-                            width={52}
-                            height={23}
-                            className="object-contain"
+                            src="/invisalign-logo.png"
+                            alt="Invisalign logo"
+                            width={64}
+                            height={20}
+                            className="object-contain h-5 w-auto"
                           />
-                          <span className="text-[8px] font-bold text-[#0F6FBA] border-l border-slate-200 pl-1.5 leading-none">Certified Provider</span>
+                          <span className="text-[10px] font-bold text-[#0F6FBA] border-l border-blue-200 pl-2 whitespace-nowrap">Certified Provider</span>
                         </div>
                       )}
                     </div>
