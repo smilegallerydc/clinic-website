@@ -230,20 +230,20 @@ export default function About() {
                       Senior Dental Surgeon
                     </span>
                     <h3 className="font-display font-extrabold text-2xl text-slate-900 leading-tight">
-                      Dr. Tanvee
+                      Dr. Tanvee Singh
                     </h3>
                     <p className="text-sm font-display font-semibold text-slate-600">
-                      BDS — Over 20 Years Experience
+                      BDS, MPH
                     </p>
                     <p className="text-xs text-slate-400 font-sans italic font-medium">
-                      Pediatric to Geriatric Care Specialist
+                      Restorative &amp; Aesthetic Specialist
                     </p>
                   </div>
                 </div>
 
                 <div className="space-y-4">
                   <p className="text-slate-600 text-sm leading-relaxed font-sans font-medium">
-                    Dr. Tanvee brings over two decades of clinical expertise to Smile Gallery Dental Clinic, where patient comfort meets advanced dentistry. She cares for patients across all age groups — from <strong>pediatric to geriatric</strong> — with calm, reassuring precision. Patients value her clear communication and her ability to understand your goals so you feel confident from consultation to final result.
+                    Dr. Tanvee Singh brings extensive clinical expertise to Smile Gallery Dental Clinic, where patient comfort meets advanced dentistry. She cares for patients across all age groups with calm, reassuring precision. Patients value her clear communication and her ability to understand their goals so they feel confident from consultation to final result.
                   </p>
                   <div className="bg-amber-50/60 rounded-2xl p-4 border border-amber-100/85 italic text-slate-700 text-xs font-sans relative">
                     <span className="absolute top-1 left-2 font-display text-4xl text-accent/10 select-none">"</span>
@@ -259,7 +259,7 @@ export default function About() {
                   Core Clinical Focus
                 </h6>
                 <div className="flex flex-wrap gap-2">
-                  {["Pediatric Dentistry", "Geriatric Care", "Preventive Dentistry", "Root Canal", "Painless Dentistry"].map((skill) => (
+                  {["Restorative Dentistry", "Aesthetic Dentistry", "Pediatric Dentistry", "Geriatric Care", "Root Canal", "Painless Dentistry"].map((skill) => (
                     <span
                       key={skill}
                       className="px-3 py-1 rounded-lg border border-amber-100 bg-amber-50/50 text-slate-600 text-xs font-semibold font-sans hover:border-accent/20 hover:text-accent transition-colors duration-200"

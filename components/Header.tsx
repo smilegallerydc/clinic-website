@@ -69,17 +69,19 @@ export default function Header() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`relative font-sans font-medium text-sm transition-colors duration-200 py-1 hover:text-primary ${
-                      isActive ? "text-primary font-semibold" : "text-slate-600"
-                    }`}
+                    className={`relative font-sans font-semibold text-sm transition-colors duration-200 pb-1.5 pt-1 hover:text-primary ${
+                      isActive ? "text-primary" : "text-slate-600"
+                    } group`}
                   >
                     <span>{link.name}</span>
-                    {isActive && (
+                    {isActive ? (
                       <motion.div
                         layoutId="activeNavIndicator"
-                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary to-accent rounded-full"
-                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                        className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-primary to-accent rounded-full"
+                        transition={{ type: "spring", stiffness: 140, damping: 22 }}
                       />
+                    ) : (
+                      <span className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-slate-100 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                     )}
                   </Link>
                 );
