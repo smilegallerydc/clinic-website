@@ -289,6 +289,7 @@ export default function Home() {
                                         alt="Smile Gallery Dental Clinic Reception"
                                         fill
                                         priority
+                                        sizes="(max-width: 640px) 1px, (max-width: 1024px) 50vw, 30vw"
                                         className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                                     />
                                 </motion.div>
@@ -313,12 +314,14 @@ export default function Home() {
                                         delay: 0.4,
                                     }}
                                     className="absolute bottom-6 right-2 w-[62%] aspect-[4096/1836] rounded-[1.5rem] overflow-hidden shadow-2xl border-8 border-white z-20 group bg-slate-100"
+                                    viewport={{ once: true }}
                                 >
                                     <Image
                                         src="/team-group-v2.jpg"
                                         alt="Smile Gallery Dental Clinic Team and staff members"
                                         fill
                                         priority
+                                        sizes="(max-width: 640px) 1px, (max-width: 1024px) 50vw, 25vw"
                                         className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                                     />
                                 </motion.div>
@@ -393,12 +396,13 @@ export default function Home() {
                         className="lg:col-span-5 relative"
                     >
                         <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl z-10 border border-slate-100">
-                            <Image
-                                src="/doctor.jpg"
-                                alt="Dr. Hetal Chheda Consulting Patient"
-                                fill
-                                className="object-cover object-center"
-                            />
+                             <Image
+                                 src="/doctor.jpg"
+                                 alt="Dr. Hetal Chheda Consulting Patient"
+                                 fill
+                                 sizes="(max-width: 1024px) 100vw, 40vw"
+                                 className="object-cover object-center"
+                             />
                         </div>
                         {/* Design accents */}
                         <div className="absolute -top-6 -left-6 w-32 h-32 rounded-3xl bg-primary-light -z-10" />
