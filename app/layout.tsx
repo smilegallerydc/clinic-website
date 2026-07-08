@@ -128,19 +128,6 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-W5XLM4LL');`}
         </Script>
 
-        {/* Google Analytics (gtag.js) */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-R1GKCMFYJF"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-R1GKCMFYJF');
-          `}
-        </Script>
 
         {/* Preconnect to speed up Google Fonts — reduces FCP */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
