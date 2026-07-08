@@ -2,31 +2,15 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import Testimonials from '@/components/Testimonials';
-import BeforeAfter from '@/components/BeforeAfter';
+import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { ScanSearch, Scan, HeartPulse, Sparkles, Phone, MapPin, Stethoscope, Smile, ShieldCheck, BookOpen, Activity } from 'lucide-react';
 
-export default function Home() {
-    const heroContainer = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.08,
-                delayChildren: 0.05,
-            },
-        },
-    } as const;
+// Lazy-load heavy below-fold components — reduces initial JS bundle for TBT
+const Testimonials = dynamic(() => import('@/components/Testimonials'), { ssr: false });
+const BeforeAfter  = dynamic(() => import('@/components/BeforeAfter'),  { ssr: false });
 
-    const heroItem = {
-        hidden: { opacity: 0, y: 15 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.45, ease: 'easeOut' as const },
-        },
-    };
+export default function Home() {
 
     return (
         <div className="space-y-12 sm:space-y-20 pb-12">
@@ -39,36 +23,25 @@ export default function Home() {
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-                        {/* Left Column: Content */}
-                        <motion.div
-                            variants={heroContainer}
-                            initial="hidden"
-                            animate="visible"
-                            className="lg:col-span-6 space-y-4 lg:space-y-3 text-slate-800"
-                        >
-                            {/* Heading */}
-                            <motion.div variants={heroItem}>
+                        {/* Left Column: Content — plain HTML so LCP text is visible on first paint */}
+                        <div className="lg:col-span-6 space-y-4 lg:space-y-3 text-slate-800">
+                            {/* Heading — LCP element: rendered visibly by SSR, CSS animation adds fade-up */}
+                            <div className="hero-item hero-item-1">
                                 <h1 className="font-display font-extrabold text-[1.75rem] sm:text-4xl lg:text-[2.75rem] leading-[1.15] sm:leading-[1.1] tracking-tight text-slate-900">
                                     <span className="text-gradient">Smile Gallery</span>{' '}
                                     Dental Clinic &amp; Implant Center.
                                 </h1>
-                            </motion.div>
+                            </div>
 
                             {/* Paragraph */}
-                            <motion.p
-                                variants={heroItem}
-                                className="text-slate-600 text-sm sm:text-base lg:text-lg max-w-xl leading-relaxed font-normal"
-                            >
+                            <p className="hero-item hero-item-2 text-slate-600 text-sm sm:text-base lg:text-lg max-w-xl leading-relaxed font-normal">
                                 Led by{' '}
                                 <strong className="text-slate-800 font-semibold">Dr. Hetal Chheda</strong>,
                                 {' '}we use <strong className="text-primary font-semibold">expert artistry</strong>, <strong className="text-primary font-semibold">painless laser procedures</strong>, and <strong className="text-primary font-semibold">advanced implants</strong> to design healthy, natural looking, perfect smiles.
-                            </motion.p>
+                            </p>
 
                             {/* USP Badges */}
-                            <motion.div
-                                variants={heroItem}
-                                className="grid grid-cols-2 sm:flex sm:flex-row sm:flex-wrap gap-2 pt-1"
-                            >
+                            <div className="hero-item hero-item-3 grid grid-cols-2 sm:flex sm:flex-row sm:flex-wrap gap-2 pt-1">
                                 {[
                                     { label: "In-House OPG",      icon: <ScanSearch className="w-3.5 h-3.5 shrink-0" />, color: "pill-shimmer-teal text-teal-800 border-teal-100" },
                                     { label: "Dental Scanner",    icon: <Scan className="w-3.5 h-3.5 shrink-0" />,       color: "pill-shimmer-blue text-blue-800 border-blue-100" },
@@ -87,13 +60,11 @@ export default function Home() {
                                         {badge.label}
                                     </motion.span>
                                 ))}
-                            </motion.div>
+                            </div>
 
 
                             {/* Book Your Visit */}
-                            <motion.div
-                                variants={heroItem}
-                                className="inline-flex flex-row flex-wrap items-center gap-x-5 gap-y-2 w-fit"
+                            <div className="hero-item hero-item-4 inline-flex flex-row flex-wrap items-center gap-x-5 gap-y-2 w-fit"
                             >
                                 <span className="text-xs font-bold text-slate-800 uppercase tracking-widest mr-1">Book Your Visit:</span>
                                 <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
@@ -118,13 +89,10 @@ export default function Home() {
                                         <span>+91 98193 00553</span>
                                     </a>
                                 </div>
-                            </motion.div>
+                            </div>
 
                             {/* Mini Trust reviews widget with avatars */}
-                            <motion.div
-                                variants={heroItem}
-                                className="flex items-center gap-4"
-                            >
+                            <div className="hero-item hero-item-5 flex items-center gap-4">
                                 <div className="flex -space-x-3">
                                     <div className="w-8 h-8 rounded-full border-2 border-white bg-teal-50 text-primary flex items-center justify-center font-bold text-[10px]">
                                         SJ
@@ -158,13 +126,10 @@ export default function Home() {
                                         </div>
                                     </a>
                                 </div>
-                            </motion.div>
+                            </div>
 
                             {/* CTAs */}
-                            <motion.div
-                                variants={heroItem}
-                                className="flex flex-wrap items-center gap-4"
-                            >
+                            <div className="hero-item hero-item-6 flex flex-wrap items-center gap-4">
                                 <a
                                     href="tel:+919819300553"
                                     className="relative inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-primary text-white font-semibold text-sm transition-all duration-300 hover:bg-primary-hover shadow-lg shadow-primary/10 hover:shadow-xl hover:shadow-primary/20 hover:-translate-y-0.5 btn-hover-effect overflow-hidden group cursor-pointer"
@@ -203,13 +168,10 @@ export default function Home() {
                                     </svg>
                                     <span>WhatsApp</span>
                                 </a>
-                            </motion.div>
+                            </div>
 
                             {/* Book via Social Media Channels */}
-                            <motion.div
-                                variants={heroItem}
-                                className="flex flex-row flex-wrap items-center gap-3 pt-1"
-                            >
+                            <div className="hero-item hero-item-7 flex flex-row flex-wrap items-center gap-3 pt-1">
                                 <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest shrink-0">
                                     Book Via:
                                 </span>
@@ -233,13 +195,10 @@ export default function Home() {
                                         <span>Facebook</span>
                                     </a>
                                 </div>
-                            </motion.div>
+                            </div>
 
                             {/* Stats */}
-                            <motion.div
-                                variants={heroItem}
-                                className="grid grid-cols-3 gap-3 sm:gap-6 pt-3 border-t border-slate-100 max-w-md text-left"
-                            >
+                            <div className="hero-item hero-item-7 grid grid-cols-3 gap-3 sm:gap-6 pt-3 border-t border-slate-100 max-w-md text-left">
                                 <div>
                                     <h4 className="font-display font-black text-xl sm:text-3xl text-slate-900">
                                         15k+
@@ -264,8 +223,8 @@ export default function Home() {
                                         Satisfaction
                                     </p>
                                 </div>
-                            </motion.div>
-                        </motion.div>
+                            </div>
+                        </div>
 
                         {/* Right Column: Layered Editorial Collage — hidden on mobile to keep hero clean */}
                         <div className="hidden sm:flex lg:col-span-6 relative justify-center lg:justify-end">

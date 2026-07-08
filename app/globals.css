@@ -95,6 +95,27 @@ body {
   background: #d92662;
 }
 
+/* ─── Hero CSS Animations (no JS dependency — fixes LCP on mobile) ──────────
+   Elements animate via CSS immediately on first paint, not after React hydration.
+   This is the key fix for Lighthouse LCP on slow mobile connections.            */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Staggered hero items: each child has progressively more delay */
+.hero-item {
+  animation: heroFadeUp 0.42s ease-out both;
+}
+.hero-item-1 { animation-delay: 0.04s; }
+.hero-item-2 { animation-delay: 0.12s; }
+.hero-item-3 { animation-delay: 0.20s; }
+.hero-item-4 { animation-delay: 0.28s; }
+.hero-item-5 { animation-delay: 0.36s; }
+.hero-item-6 { animation-delay: 0.44s; }
+.hero-item-7 { animation-delay: 0.52s; }
+
+/* ─── USP Pills Animations ──────────────────────────────────────────────── */
 /* USP Pills Animations */
 @keyframes shimmer {
   0% {
