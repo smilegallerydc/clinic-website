@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
-import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 import { ScanSearch, Scan, HeartPulse, Sparkles, Phone, MapPin, Stethoscope, Smile, ShieldCheck, BookOpen, Activity } from 'lucide-react';
 
 // Lazy-load heavy below-fold components — reduces initial JS bundle for TBT
@@ -11,6 +11,23 @@ const Testimonials = dynamic(() => import('@/components/Testimonials'), { ssr: f
 const BeforeAfter  = dynamic(() => import('@/components/BeforeAfter'),  { ssr: false });
 
 export default function Home() {
+    // Lightweight IntersectionObserver for scroll-reveal (replaces framer-motion whileInView)
+    const revealRefs = useRef<(HTMLDivElement | null)[]>([]);
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            { rootMargin: '-80px' }
+        );
+        revealRefs.current.forEach((el) => el && observer.observe(el));
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <div className="space-y-12 sm:space-y-20 pb-12">
@@ -48,17 +65,13 @@ export default function Home() {
                                     { label: "Implant Specialist",icon: <Activity className="w-3.5 h-3.5 shrink-0" />,   color: "pill-shimmer-pink text-primary border-pink-100" },
                                     { label: "Painless Dentistry",icon: <Sparkles className="w-3.5 h-3.5 shrink-0" />,  color: "pill-shimmer-purple text-accent border-purple-100" },
                                 ].map((badge, idx) => (
-                                    <motion.span
+                                    <span
                                         key={badge.label}
-                                        initial={{ opacity: 0, scale: 0.9, y: 5 }}
-                                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                                        transition={{ duration: 0.35, delay: 0.15 + idx * 0.08, ease: "easeOut" }}
-                                        whileHover={{ scale: 1.04, y: -2 }}
-                                        className={`inline-flex items-center justify-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full border text-xs font-semibold font-sans cursor-default transition-all duration-200 ${badge.color}`}
+                                        className={`usp-badge inline-flex items-center justify-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-full border text-xs font-semibold font-sans cursor-default ${badge.color}`}
                                     >
                                         {badge.icon}
                                         {badge.label}
-                                    </motion.span>
+                                    </span>
                                 ))}
                             </div>
 
@@ -233,16 +246,7 @@ export default function Home() {
                                 <div className="absolute top-[10%] left-[5%] w-[85%] h-[80%] rounded-[3rem] bg-gradient-to-tr from-primary-light to-teal-50 -z-10 rotate-3" />
 
                                 {/* Main Image: Clinic Lobby (hero.jpg) */}
-                                <motion.div
-                                    initial={{ opacity: 0, y: 30, rotate: -2 }}
-                                    animate={{ opacity: 1, y: 0, rotate: -2 }}
-                                    transition={{
-                                        duration: 0.7,
-                                        ease: 'easeOut',
-                                        delay: 0.25,
-                                    }}
-                                    className="absolute top-0 left-2 w-[65%] aspect-[3/4] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white z-10 group bg-slate-100"
-                                >
+                                <div className="collage-img-1 absolute top-0 left-2 w-[65%] aspect-[3/4] rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white z-10 group bg-slate-100">
                                     <Image
                                         src="/hero.jpg"
                                         alt="Smile Gallery Dental Clinic Reception"
@@ -251,30 +255,10 @@ export default function Home() {
                                         sizes="(max-width: 640px) 1px, (max-width: 1024px) 50vw, 30vw"
                                         className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                                     />
-                                </motion.div>
+                                </div>
 
                                 {/* Secondary Overlapping Image: Clinic Team Photo */}
-                                <motion.div
-                                    initial={{
-                                        opacity: 0,
-                                        y: 40,
-                                        x: 20,
-                                        rotate: 2,
-                                    }}
-                                    animate={{
-                                        opacity: 1,
-                                        y: 0,
-                                        x: 0,
-                                        rotate: 2,
-                                    }}
-                                    transition={{
-                                        duration: 0.7,
-                                        ease: 'easeOut',
-                                        delay: 0.4,
-                                    }}
-                                    className="absolute bottom-6 right-2 w-[62%] aspect-[4096/1836] rounded-[1.5rem] overflow-hidden shadow-2xl border-8 border-white z-20 group bg-slate-100"
-                                    viewport={{ once: true }}
-                                >
+                                <div className="collage-img-2 absolute bottom-6 right-2 w-[62%] aspect-[4096/1836] rounded-[1.5rem] overflow-hidden shadow-2xl border-8 border-white z-20 group bg-slate-100">
                                     <Image
                                         src="/team-group-v2.jpg"
                                         alt="Smile Gallery Dental Clinic Team and staff members"
@@ -283,15 +267,10 @@ export default function Home() {
                                         sizes="(max-width: 640px) 1px, (max-width: 1024px) 50vw, 25vw"
                                         className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
                                     />
-                                </motion.div>
+                                </div>
 
                                 {/* Floating Decorative Reviews Badge */}
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 0.65, duration: 0.4 }}
-                                    className="absolute top-[20%] right-[-10px] z-30 bg-white/90 backdrop-blur shadow-xl border border-slate-100 p-4 rounded-2xl flex items-center gap-3 max-w-[190px] pointer-events-none"
-                                >
+                                <div className="collage-badge-1 absolute top-[20%] right-[-10px] z-30 bg-white/90 backdrop-blur shadow-xl border border-slate-100 p-4 rounded-2xl flex items-center gap-3 max-w-[190px] pointer-events-none">
                                     <div className="w-10 h-10 rounded-xl bg-amber-50 text-amber-500 flex items-center justify-center font-bold text-lg">
                                         ★
                                     </div>
@@ -303,15 +282,10 @@ export default function Home() {
                                             Borivali West, Mumbai
                                         </span>
                                     </div>
-                                </motion.div>
+                                </div>
 
                                 {/* Floating Technology Badge */}
-                                <motion.div
-                                    initial={{ opacity: 0, scale: 0.8 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 0.75, duration: 0.4 }}
-                                    className="absolute bottom-[20%] left-[-20px] z-30 bg-white/90 backdrop-blur shadow-xl border border-slate-100 p-4 rounded-2xl flex items-center gap-3 max-w-[210px] pointer-events-none"
-                                >
+                                <div className="collage-badge-2 absolute bottom-[20%] left-[-20px] z-30 bg-white/90 backdrop-blur shadow-xl border border-slate-100 p-4 rounded-2xl flex items-center gap-3 max-w-[210px] pointer-events-none">
                                     <div className="w-10 h-10 rounded-xl bg-teal-50 text-primary flex items-center justify-center shrink-0">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -336,7 +310,7 @@ export default function Home() {
                                             3D Diagnostic Scanners
                                         </span>
                                     </div>
-                                </motion.div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -347,12 +321,9 @@ export default function Home() {
             <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 font-sans overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                     {/* Left Visual Column */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -25 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: '-100px' }}
-                        transition={{ duration: 0.55, ease: 'easeOut' }}
-                        className="lg:col-span-5 relative"
+                    <div
+                        ref={(el) => { revealRefs.current[0] = el; }}
+                        className="reveal-left lg:col-span-5 relative"
                     >
                         <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl z-10 border border-slate-100">
                              <Image
@@ -366,19 +337,12 @@ export default function Home() {
                         {/* Design accents */}
                         <div className="absolute -top-6 -left-6 w-32 h-32 rounded-3xl bg-primary-light -z-10" />
                         <div className="absolute -bottom-6 -right-6 w-48 h-48 rounded-full bg-teal-100/50 -z-10 blur-xl" />
-                    </motion.div>
+                    </div>
 
                     {/* Right Bio Column */}
-                    <motion.div
-                        initial={{ opacity: 0, x: 25 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, margin: '-100px' }}
-                        transition={{
-                            duration: 0.55,
-                            ease: 'easeOut',
-                            delay: 0.15,
-                        }}
-                        className="lg:col-span-7 space-y-6"
+                    <div
+                        ref={(el) => { revealRefs.current[1] = el; }}
+                        className="reveal-right lg:col-span-7 space-y-6"
                     >
                         <span className="text-primary font-bold text-xs uppercase tracking-widest block">
                             About Smile Gallery
@@ -427,7 +391,7 @@ export default function Home() {
                                 </svg>
                             </Link>
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </section>
 
@@ -451,17 +415,9 @@ export default function Home() {
                     {/* Cards Grid */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                         {/* Dental Implants & FMR */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-50px' }}
-                            transition={{
-                                duration: 0.5,
-                                delay: 0.05,
-                                ease: 'easeOut',
-                            }}
-                            whileHover={{ y: -6 }}
-                            className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-xl shadow-slate-100/50 hover:shadow-2xl hover:shadow-primary/5 hover:border-primary/20 transition-all duration-300 group flex flex-col justify-between min-h-[400px] relative overflow-hidden"
+                        <div
+                            ref={(el) => { revealRefs.current[2] = el; }}
+                            className="reveal card-lift bg-white rounded-[2rem] p-6 border border-slate-100 shadow-xl shadow-slate-100/50 hover:shadow-2xl hover:shadow-primary/5 hover:border-primary/20 transition-all duration-300 group flex flex-col justify-between min-h-[400px] relative overflow-hidden"
                         >
                             <div className="absolute top-0 left-0 w-2.5 h-full bg-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             <div className="space-y-4">
@@ -514,20 +470,12 @@ export default function Home() {
                                     />
                                 </svg>
                             </Link>
-                        </motion.div>
+                        </div>
 
                         {/* Invisalign® Clear Aligners */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-50px' }}
-                            transition={{
-                                duration: 0.5,
-                                delay: 0.15,
-                                ease: 'easeOut',
-                            }}
-                            whileHover={{ y: -6 }}
-                            className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-xl shadow-slate-100/50 hover:shadow-2xl hover:shadow-[#0F6FBA]/5 hover:border-[#0F6FBA]/20 transition-all duration-300 group flex flex-col justify-between min-h-[400px] relative overflow-hidden"
+                        <div
+                            ref={(el) => { revealRefs.current[3] = el; }}
+                            className="reveal card-lift bg-white rounded-[2rem] p-6 border border-slate-100 shadow-xl shadow-slate-100/50 hover:shadow-2xl hover:shadow-[#0F6FBA]/5 hover:border-[#0F6FBA]/20 transition-all duration-300 group flex flex-col justify-between min-h-[400px] relative overflow-hidden"
                         >
                             <div className="absolute top-0 left-0 w-2.5 h-full bg-[#0F6FBA] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             <div className="space-y-4">
@@ -586,20 +534,12 @@ export default function Home() {
                                     />
                                 </svg>
                             </Link>
-                        </motion.div>
+                        </div>
 
                         {/* In-House OPG & Scanner */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-50px' }}
-                            transition={{
-                                duration: 0.5,
-                                delay: 0.25,
-                                ease: 'easeOut',
-                            }}
-                            whileHover={{ y: -6 }}
-                            className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-xl shadow-slate-100/50 hover:shadow-2xl hover:shadow-emerald-600/5 hover:border-emerald-600/20 transition-all duration-300 group flex flex-col justify-between min-h-[400px] relative overflow-hidden"
+                        <div
+                            ref={(el) => { revealRefs.current[4] = el; }}
+                            className="reveal card-lift bg-white rounded-[2rem] p-6 border border-slate-100 shadow-xl shadow-slate-100/50 hover:shadow-2xl hover:shadow-emerald-600/5 hover:border-emerald-600/20 transition-all duration-300 group flex flex-col justify-between min-h-[400px] relative overflow-hidden"
                         >
                             <div className="absolute top-0 left-0 w-2.5 h-full bg-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             <div className="space-y-4">
@@ -662,20 +602,12 @@ export default function Home() {
                                     />
                                 </svg>
                             </Link>
-                        </motion.div>
+                        </div>
 
                         {/* Cosmetic & General Care */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-50px' }}
-                            transition={{
-                                duration: 0.5,
-                                delay: 0.35,
-                                ease: 'easeOut',
-                            }}
-                            whileHover={{ y: -6 }}
-                            className="bg-white rounded-[2rem] p-6 border border-slate-100 shadow-xl shadow-slate-100/50 hover:shadow-2xl hover:shadow-accent/5 hover:border-accent/20 transition-all duration-300 group flex flex-col justify-between min-h-[400px] relative overflow-hidden"
+                        <div
+                            ref={(el) => { revealRefs.current[5] = el; }}
+                            className="reveal card-lift bg-white rounded-[2rem] p-6 border border-slate-100 shadow-xl shadow-slate-100/50 hover:shadow-2xl hover:shadow-accent/5 hover:border-accent/20 transition-all duration-300 group flex flex-col justify-between min-h-[400px] relative overflow-hidden"
                         >
                             <div className="absolute top-0 left-0 w-2.5 h-full bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                             <div className="space-y-4">
@@ -728,7 +660,7 @@ export default function Home() {
                                     />
                                 </svg>
                             </Link>
-                        </motion.div>
+                        </div>
                     </div>
                     {/* Bottom Action */}
                     <div className="text-center pt-4">
