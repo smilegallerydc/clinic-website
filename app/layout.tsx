@@ -19,7 +19,7 @@ const urbanist = Urbanist({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://smilegallerydentalclinic.in"),
+  metadataBase: new URL("https://smilegalleryimplants.com"),
   title: {
     default: "Smile Gallery Dental Clinic | Dr. Hetal Chheda – Borivali West, Mumbai",
     template: "%s | Smile Gallery Dental Clinic Borivali",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     siteName: "Smile Gallery Dental Clinic",
-    url: "https://smilegallerydentalclinic.in",
+    url: "https://smilegalleryimplants.com",
     images: [
       {
         url: "/hero.jpg",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     images: ["/hero.jpg"],
   },
   alternates: {
-    canonical: "https://smilegallerydentalclinic.in",
+    canonical: "https://smilegalleryimplants.com",
   },
 };
 
@@ -68,8 +68,8 @@ const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "Dentist",
   "name": "Smile Gallery Dental Clinic & Implant Centre",
-  "image": "https://smilegallerydentalclinic.in/hero.jpg",
-  "url": "https://smilegallerydentalclinic.in",
+  "image": "https://smilegalleryimplants.com/hero.jpg",
+  "url": "https://smilegalleryimplants.com",
   "telephone": "+919819300553",
   "address": {
     "@type": "PostalAddress",
